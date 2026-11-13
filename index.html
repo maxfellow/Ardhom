@@ -706,6 +706,11 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
 }
 @keyframes shin{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
 @keyframes lin{from{opacity:0;transform:translate3d(0,40px,0)}}
+
+/* Safari: give aspect-ratio boxes whose children are all absolutely placed an in-flow height */
+.appr .media::before{content:"";display:block;padding-top:56.25%}
+.map .box::before{content:"";display:block;padding-top:85%}
+.appr .media,.map .box{height:auto}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
