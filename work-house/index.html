@@ -7,7 +7,7 @@
 <meta name="description" content="A two-storey family home of exposed Kemp earth-block walls around a reflecting pool.">
 <link rel="canonical" href="https://ardhom.com/work-house/">
 <meta name="theme-color" content="#EFE7DA">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23EFE7DA'/><g fill='none' stroke='%232E1A10' stroke-width='5' stroke-linecap='round'><path d='M20 10 V54'/><path d='M20 38 A12 12 0 0 1 44 38 V54'/></g><path d='M26 54 V46 A6 6 0 0 1 38 46 V54 Z' fill='%23B5603F'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M13 62 V30 A19 19 0 0 1 51 30 V62 Z' fill='%23B5603F'/></svg>">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ardhom">
 <meta property="og:title" content="Family House · Kemp concept | Ardhom">
@@ -17,6 +17,8 @@
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://ardhom.com/img/og.jpg">
+<meta name="keywords" content="mud blocks, premium mud blocks, interlocking mud blocks, best mud blocks in India, mud blocks vs cement blocks, CSEB, earth blocks, Kemp, Ardhom, Mangalore">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Ardhom", "url": "https://ardhom.com/", "logo": "https://ardhom.com/img/og.jpg", "email": "hello@ardhom.com", "telephone": "+91 86601 67354", "address": {"@type": "PostalAddress", "addressLocality": "Mangalore", "addressRegion": "Karnataka", "addressCountry": "IN"}, "description": "Premium mud blocks and earth building materials. Makers of Kemp interlocking mud blocks, delivered across India."}</script>
 <script>if(!location.hash)history.replaceState(null,'','#work-house');</script>
 </head>
 <body>
@@ -133,7 +135,7 @@ figure img{width:100%;height:100%;object-fit:cover}
 @media (hover:none),(pointer:coarse){.cur{display:none}}
 
 /* HERO */
-.hero{padding-top:42px;min-height:min(100svh,980px);display:flex;flex-direction:column;overflow:hidden}
+.hero{padding-top:42px;min-height:100vh;min-height:100lvh;display:flex;flex-direction:column;overflow:hidden}
 .giant{width:100%;box-sizing:border-box;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));margin-top:2vw;color:#2E1A10}
 .giant svg{width:100%;height:auto;display:block;overflow:visible}
 .giant use{stroke-dasharray:420;stroke-dashoffset:420;fill-opacity:0;transition:stroke-dashoffset 2.4s cubic-bezier(.65,0,.2,1),fill-opacity 1s ease 1.8s}
@@ -141,7 +143,7 @@ body.ready .giant use{stroke-dashoffset:0;fill-opacity:1}
 .hero-grid{flex:1;display:grid;grid-template-columns:var(--col) calc(var(--col)*3) var(--col) 1fr;position:relative;border-top:1px solid var(--line);min-height:340px}
 .hero-grid .tag{grid-column:2;padding:32px 0 0 8px;font-size:13px;line-height:1.35}
 .hero-grid .about{grid-column:4;align-self:center;padding:40px max(16px,env(safe-area-inset-right,0px)) 72px 8px;display:grid;gap:22px;max-width:30em}
-.hero-grid .about h1{font-size:clamp(26px,2.6vw,42px);line-height:1.1;letter-spacing:-.02em}
+.hero-grid .about h1,.hero-grid .about .h1c{font-size:clamp(26px,2.6vw,42px);line-height:1.1;letter-spacing:-.02em}
 .hero-grid .about p{font-size:15px;color:var(--muted);max-width:44ch}
 .hero-grid .est{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:22px;font-size:13px;color:var(--muted)}
 .hero-grid .cue{position:absolute;left:50%;bottom:22px;padding-left:10px;font-size:13px;color:var(--muted);text-decoration:none}
@@ -266,13 +268,14 @@ body.ready .diag line{stroke-dashoffset:0}
 .appr{height:420vh}
 .appr .stick{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:var(--col) minmax(0,1.5fr) minmax(0,1fr);align-items:center;overflow:hidden}
 .appr .media{grid-column:2;position:relative;aspect-ratio:16/9;overflow:hidden}
-.appr .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;-webkit-clip-path:inset(0 0 0 100%);clip-path:inset(0 0 0 100%);transform:scale(1.06);transition:-webkit-clip-path 1.2s var(--ez2),clip-path 1.2s var(--ez2),opacity .5s;will-change:transform}
-.appr .media img.was{opacity:1;z-index:1;-webkit-clip-path:inset(0);clip-path:inset(0);transition:none}
+.appr .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:translate3d(7%,0,0) scale(1.1);transition:opacity 1.1s cubic-bezier(.4,0,.2,1),transform 1.8s var(--ez);will-change:transform,opacity}
+.appr .media img.was{opacity:0;z-index:1;transform:translate3d(-5%,0,0) scale(1.04);transition:opacity 1.2s cubic-bezier(.4,0,.2,1) .15s,transform 1.8s var(--ez)}
 @keyframes kb{0%{transform:scale(1.06) translate3d(0,0,0)}50%{transform:scale(1.14) translate3d(-2.2%,-1.4%,0)}100%{transform:scale(1.08) translate3d(1.6%,-.6%,0)}}
-.appr .media img.on{opacity:1;z-index:2;-webkit-clip-path:inset(0);clip-path:inset(0);animation:kb 14s ease-in-out infinite}
+.appr .media img.on{opacity:1;z-index:2;transform:translate3d(0,0,0) scale(1.04)}
 .appr .copy{position:relative;height:100%;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 28px}
 .appr .eyebrow{position:absolute;left:28px;top:15vh;font-size:13px}
-.appr .slide{position:absolute;left:28px;right:max(16px,env(safe-area-inset-right,0px));top:24vh;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .9s var(--ez)}
+.appr .slide{position:absolute;left:28px;right:max(16px,env(safe-area-inset-right,0px));top:24vh;opacity:0;transform:translate3d(48px,0,0);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform 1.2s var(--ez)}
+.appr .slide.past{transform:translate3d(-48px,0,0)}
 .appr .slide.on{opacity:1;transform:none}
 .appr .slide h3{font-size:clamp(34px,3.6vw,66px);line-height:.98;letter-spacing:-.035em;max-width:10ch}
 .appr .slide p{margin-top:24px;max-width:32ch;font-size:15px}
@@ -782,6 +785,17 @@ footer .wm svg{width:100%;height:auto;display:block}
   .pj-a{padding-left:max(16px,env(safe-area-inset-left,0px))}
   .wa-fab{width:52px;height:52px}
 }
+.hero-grid .about p.h1c{color:var(--fg,inherit);font-weight:400;margin:0;max-width:none}
+/* ===== v17: block wall ===== */
+.bwall{position:relative;margin:56px 0 8px;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 var(--col);touch-action:pan-y}
+.bwall .rows{display:grid;gap:5px;padding-left:8px}
+.bwall .row{display:flex;gap:5px}
+.bwall .row:nth-child(even){margin-left:calc(var(--bw) * -.5)}
+.bwall .bk{flex:none;width:var(--bw);height:calc(var(--bw) * .4167);background:var(--c,#B5603F);border-radius:1px;box-shadow:inset 0 2px 0 rgba(255,236,220,.10),inset 0 -3px 0 rgba(40,18,8,.18);transform:translate3d(0,var(--l,0px),0);filter:brightness(var(--b,1));transition:transform .5s var(--ez),filter .5s;will-change:transform}
+.bwall .wrap{overflow:hidden;padding-top:22px;margin-top:-22px}
+.bwall .cap{display:flex;justify-content:space-between;gap:16px;margin-top:16px;padding-left:8px;font-size:13px;color:var(--muted)}
+@media (max-width:899px){.bwall{padding-left:max(16px,env(safe-area-inset-left,0px))}.bwall .rows,.bwall .cap{padding-left:0}}
+
 /* ===== v16 ===== */
 html,body,.dv,*{scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webkit-scrollbar{display:none;width:0;height:0;background:transparent}
@@ -820,7 +834,6 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
   .bx h2{font-size:clamp(38px,11vw,56px)}
 }
 .loopc{min-height:100vh;overflow:hidden}
-.loopc .hero{min-height:100vh}
 
 /* plan page */
 .pl{display:grid;grid-template-columns:var(--col) minmax(0,1.1fr) minmax(0,1fr);border-top:1px solid var(--line)}
@@ -1001,7 +1014,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
 
   <section class="kw t-clay" id="kemp" aria-labelledby="kw-h">
     <div class="stick">
-      <div class="top"><p class="lb muted">Our first product</p><p id="kw-h">Kemp, interlocking earth blocks by Ardhom.</p></div>
+      <div class="top"><p class="lb muted">Our first product</p><p id="kw-h">Kemp, premium interlocking mud blocks by Ardhom.</p></div>
       <div class="stats" id="stats">
         <div class="stat"><b data-to="2017" data-plain="1">2017</b><span>Pressing earth blocks since</span></div>
         <div class="stat"><b data-to="80" data-suf="+">80+</b><span>Projects built</span></div>
@@ -1107,6 +1120,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
   <section class="proj t-clay" id="projects" aria-labelledby="pj-h">
     <div class="shd"><h2 id="pj-h">For projects that last</h2><p class="kn">Architects · Developers · Hospitality · Institutions</p></div>
     <div class="pj-l"><p>Kemp is specified for homes, resorts and institutions across India. Supply, laying and detailing are planned with your team from the first drawing.</p></div>
+    <div class="bwall" data-wall aria-hidden="true"><div class="wrap"><div class="rows"></div></div><div class="cap"><span>Kemp, laid in running bond</span><span>Move across the wall</span></div></div>
     <div class="pj-g">
       <div class="pj-c"><span class="n">01</span><h3>Planned supply</h3><p>Deliveries scheduled to your build, so walls never wait for blocks.</p></div>
       <div class="pj-c"><span class="n">02</span><h3>Project pricing</h3><p>Pricing quoted against your drawings and delivery plan.</p></div>
@@ -1200,7 +1214,8 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
     <div class="fc"><p class="k">Legal</p><a href="#privacy">Privacy policy</a><a href="#terms">Terms of use</a><p class="k" style="margin-top:14px">Write to us</p><p>hello@ardhom.com</p></div>
   </div>
   <div class="seo"><p class="k">Kemp by Ardhom</p><ul>
-    <li>Interlocking earth blocks</li><li>Interlocking mud blocks</li><li>Compressed stabilised earth blocks (CSEB)</li><li>Laterite blocks Karnataka</li><li>Mud blocks Mangalore</li><li>Eco-friendly bricks India</li><li>Sustainable building materials</li><li>Mud block house construction</li><li>Exposed block walls</li><li>Low-cement wall blocks</li><li>Earth blocks for homes and resorts</li><li>Green building materials</li><li>Interlocking bricks delivered across India</li>
+    <li>Premium mud blocks</li><li>Best mud blocks in India</li><li>Mud blocks vs cement blocks</li><li>Mud block price</li><li>Mud block house</li><li>Interlocking mud blocks Karnataka</li><li>Mud blocks Mangalore</li><li>Mud bricks for houses</li>
+    <li>Interlocking earth blocks</li><li>Interlocking mud blocks</li><li>Compressed stabilised earth blocks (CSEB)</li><li>Laterite blocks Karnataka</li><li>Eco-friendly bricks India</li><li>Sustainable building materials</li><li>Mud block house construction</li><li>Exposed block walls</li><li>Low-cement wall blocks</li><li>Earth blocks for homes and resorts</li><li>Green building materials</li><li>Interlocking bricks delivered across India</li>
   </ul></div>
   <div class="fin"><span class="c">© 2026 Ardhom · Mangalore, India · Delivering across India</span><a href="#top">Back to top</a></div>
   <div class="wm"><svg viewBox="-3 14 288 68" role="img" aria-label="ardhom"><use href="#wm"></use></svg></div>
@@ -1226,6 +1241,39 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
   $('#steps').innerHTML=STEPS.map(function(s){return '<article class="step hov" data-cursor="'+s[1]+'"><figure class="rimg"><img class="px" loading="lazy" src="/img/'+s[2]+'.webp" alt="'+s[3]+'"></figure><div class="sm tp" data-p="-0.06"><span class="n">'+s[0]+'</span><h3>'+s[1]+'</h3></div><ul>'+s[4].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></article>'}).join('');
 
   var BLOG=[
+    {k:'n-mud-vs-cement',t:"Mud blocks vs cement blocks: which is better for your home?",c:"Guides",d:"13 Nov 2026",img:"kemp-stack",
+     l:"It is the first question almost every family asks us, usually across a table with a floor plan spread out between the tea cups: should we build with mud blocks or cement blocks? The honest answer depends on what you want from your walls. But once you see what each block is made of, how it is laid and what it asks of you after the wall goes up, the choice becomes much clearer.",
+     s:[["Two blocks, two ideas of a wall","A solid cement block, often called a concrete block, is made mostly of cement, sand and aggregate, cast in a mould and cured. It is strong and familiar, and almost always hidden behind plaster and paint. A mud block, more precisely a compressed stabilised earth block, is made mostly of sieved soil with a small share of cement, pressed dense in a mould and cured slowly. A premium mud block such as Kemp goes one step further: it is pressed to an exact size with an interlocking tongue and groove, so it can be laid true and left exposed as the finished wall."],
+        ["What goes into each","The biggest difference is the recipe. A cement block is mostly cement and crushed stone, both of which take significant energy and quarrying to produce. A mud block is mostly earth, often from the same region where it is used, with only enough cement to make it durable in rain. No kiln is involved in either, but a mud block uses far less cement per wall, which is where much of a wall's carbon comes from."],
+        ["Comfort inside the house","Dense earth is good at storing heat and releasing it slowly. In a hot afternoon, a mud block wall takes longer to warm through, and rooms tend to feel steadier and less harsh than behind thin cement block walls. Earth also handles humidity gently, taking up a little moisture when the air is damp and giving it back when it dries. On India's coast and plains, that difference is something families notice in the first summer."],
+        ["Finish, and the cost nobody counts","A cement block wall is rarely finished when it is laid. It needs plaster on both faces, then putty and paint, and repainting every few years. A Kemp mud block wall is finished once it is laid: the joints are grooved and the face is given a clear gum finish, leaving a seamless, textured earth wall. When you compare the two, compare finished walls, not blocks. Once plaster, paint and the labour for both are counted, a premium mud block wall usually costs about the same as a laterite wall, and it keeps saving you every time a painted wall would need redoing."],
+        ["Strength and safety","Both blocks can build safe homes when they are made well and designed by an engineer. Well-made mud blocks are pressed to a consistent density and tested for compressive strength and water absorption, with reference to standards such as IS 1725 for stabilised soil blocks. Kemp wall blocks are made for outer, load-bearing and compound walls, and your structural engineer should always detail bands, lintels and any columns for your site and seismic zone."],
+        ["So which should you choose?","If you want walls you will plaster and paint anyway, and speed on a large commercial frame is all that matters, cement blocks will do the job. If you want cooler rooms, a lower-carbon house, and walls that look beautiful bare for decades, mud blocks are the better choice. And if you want that in a block made to an exact size, laid true and finished with nothing more than grooving and a clear gum coat, that is exactly why we make Kemp."]]},
+    {k:'n-best-mud-block',t:"What makes the best mud block in India? A buyer's guide",c:"Guides",d:"12 Nov 2026",img:"process-3",
+     l:"Search for mud blocks in India and you will find hundreds of suppliers, prices that swing widely, and photographs that all look much the same. Yet two mud blocks that look alike in a photo can behave very differently in a wall. Here is what separates an ordinary mud block from the best, and why we built Kemp around every one of these points.",
+     s:[["1. The earth itself","Good blocks start with good soil. The right soil has a balance of sand and clay, is free of roots, stones and organic matter, and is sieved to an even grain before it is mixed. Kemp is made from the red laterite earth of India's south-west coast, a soil prized for building for centuries, checked and sieved before every batch."],
+        ["2. Just enough cement","Too little stabiliser and a block weakens in the rain; too much and you have a cement block in disguise, with the cost and carbon to match. The best mud blocks use a small, measured share of cement, enough for durability and no more. That balance is what lets Kemp stay mostly earth while standing up to the monsoon."],
+        ["3. Pressure and precision","A block is only as good as its press. High, even pressure gives a dense block with crisp edges and true faces. When every block comes out of the same steel mould at the same size, walls rise straight with a thin bond instead of thick mortar beds. Ask any supplier how much their blocks vary in size. Kemp is pressed in one mould, so every block matches the next."],
+        ["4. Slow curing","Many problems with mud blocks come from rushing. Blocks need to cure slowly, in shade, kept moist, before they are dispatched. A block that leaves the yard too soon can crack, dust or lose strength. Every Kemp block is stacked in shade and cured slowly, and only leaves the yard when it is ready."],
+        ["5. An interlocking shape","The best modern mud blocks interlock. A raised tongue on top and a matching groove below lock each course into the last, keeping walls aligned and reducing mortar. Kemp is designed as a system: a wall block, a partition block and a half block for corners and openings, so no block needs to be cut on show."],
+        ["6. A face worth leaving bare","If you plan to plaster, almost any block will do. If you want an exposed wall, and most people choose mud blocks for exactly that, the face matters. Kemp is pressed smooth and true, and once laid the joints are grooved and the wall gets a clear gum finish. No plaster, no paint, just a seamless, textured earth wall."],
+        ["7. Testing, supply and support","Finally, look beyond the block. Does the maker test for strength and water absorption? Can they supply your whole project on schedule, not just a first load? Can they arrange masons who know interlocking walls? Ardhom plans supply around your build, arranges trained laying teams and works with your architect on detailing, so the wall you imagined is the wall you get."],
+        ["Why we believe Kemp is India's finest mud block","Plenty of good mud blocks are made across India. We set out to make the one we would want in our own homes: honest red earth, a measured share of cement, pressed hard in one mould, cured slowly, designed to interlock and finished with nothing but grooving and a clear gum coat. If you are comparing, ask us for a sample block and hold it next to any other. That is the simplest test of all."]]},
+    {k:'n-premium-mud-blocks',t:"Premium mud blocks: what you pay for, and what you save",c:"Guides",d:"11 Nov 2026",img:"philosophy-1",
+     l:"Mud blocks have a reputation for being cheap, and some are. A premium mud block costs a little more per piece, and the difference is worth understanding before you compare quotes. The question that matters is not what one block costs, but what a finished wall costs, and how long it stays beautiful.",
+     s:[["Price per block is the wrong number","Mud block prices in India vary with size, soil, cement content, pressing and distance. Comparing blocks by price alone is like comparing cars by the price of the tyres. A block that is uneven needs thicker mortar and more labour; a block with a rough face needs plaster; a block that was rushed out of curing can crack. Each of those costs arrives later, on site."],
+        ["What a premium block includes","A premium mud block such as Kemp is made from selected, sieved laterite soil, a measured share of cement, high and even pressing in one steel mould, and slow curing in shade. You are paying for consistency: every block the same size, every face true, every load cured before dispatch. That consistency is what makes an exposed wall possible."],
+        ["What it saves you","Because Kemp is laid with a thin bond and finished with grooving and a clear gum coat, a wall skips plaster, putty and paint entirely. That removes material, labour and weeks from the programme, and removes repainting from every year that follows. Once these are counted, a finished Kemp wall typically comes in at around the cost of a laterite wall."],
+        ["The value that does not show on a quote","Cooler rooms in summer, a house that looks finished the day the walls go up, a lower-carbon build and a facade that ages with grace rather than peeling: these are the reasons people choose earth in the first place. A premium mud block is how you get them without compromise."],
+        ["How to compare quotes","Ask each supplier for the block size and its variation, the cement content, the curing method and time, test results for strength and water absorption, and whether the price includes delivery to your site. Then price a finished wall, including mortar, labour and finishing, for each option. We are happy to do this comparison with you for your own drawings."]]},
+    {k:'n-mud-block-house',t:"Building a mud block house in India: a complete guide",c:"Guides",d:"10 Nov 2026",img:"project-house",
+     l:"A mud block house is not a step back in time. With well-made interlocking mud blocks, a good engineer and a team that knows the system, it is one of the most comfortable, durable and beautiful ways to build a home in India today. Here is how a Kemp house comes together, from the first drawing to the finished wall.",
+     s:[["Start with the design","Tell your architect early that you want to build with interlocking mud blocks. Wall lengths and openings planned to the block module save cutting and give cleaner corners. A Kemp wall block is 12 × 8 × 5 inches, and about 2.4 blocks build a square foot of wall. Use our Plan your build page for a first estimate, then send us drawings for an exact count."],
+        ["Structure and foundations","Mud block houses can be load-bearing or framed. Either way, your structural engineer should design the foundation, plinth, bands at sill and lintel level and the roof connection for your soil and seismic zone. A raised plinth with a damp-proof course keeps ground moisture away from the earth wall."],
+        ["Laying the walls","The first course is set level in mortar on the plinth. From there, the tongue and groove of each Kemp block seats into the course below, so walls rise true with only a thin bond. Half blocks finish corners, ends and openings. Plan conduits and plumbing before laying, so wall faces stay unbroken. We can arrange masons experienced with interlocking walls."],
+        ["Finishing","Once the walls are laid, the joints are grooved and the wall is given a clear gum finish. That is the finishing. There is no plaster to cure and crack, no putty and no paint, which saves weeks on site and leaves a seamless, textured earth wall inside and out."],
+        ["Designing for rain","Earth walls love a good hat and good boots: generous roof overhangs, a raised plinth and drainage that carries water away from the walls. With these in place, Kemp walls handle India's monsoon well, and the first rainy season is simply a good time to walk around and check that water goes where it should."],
+        ["Living in it","Families who move into mud block houses talk first about the feel of the rooms: steadier in the afternoon heat, calmer in the humidity, and quietly beautiful in changing light. A Kemp wall needs almost no maintenance, and any chipped corner shows the same red earth as the face, because the colour runs right through the block."]]},
     {k:'n-what-is-kemp',t:"What is an interlocking earth block?",c:"Material",d:"4 Nov 2026",img:"approach",
      l:"Morning on the yard outside Mangalore. The press has been running since first light, and the air smells of wet red earth. A block slides out, still cool and damp, its edges crisp enough to cut paper. A worker lifts it with both hands, turns it once to check the face, and sets it in the shade beside a thousand others. In a few weeks it will be part of someone's home. This is what an interlocking earth block is, and why we think it matters.",
      s:[["Earth, pressed rather than fired","For most of the last century, a wall in India meant one of two things: fired clay bricks or cement blocks. An interlocking earth block is a third way, and in many ways an older one. It starts as soil, in our case the red laterite earth of India's south-west coast. The soil is dug, dried, sieved and mixed with a small share of cement and just enough water. Then it goes into a press, which squeezes it into a dense, exact block. Nothing is fired. There is no kiln and no chimney. The block hardens as it cures slowly in the shade, kept damp for weeks so the cement can bind the soil grain by grain."],
@@ -1308,6 +1356,14 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
         ["After delivery","Our work does not end at the gate. If you need masons who know interlocking walls, we can arrange a laying team. If questions come up during the build, about corners, openings or finishes, ask us. And when your home is finished, we would love to see it. Every house built with Kemp is part of the story we are trying to tell."]]}
   ];
   var FAQ=[
+    ['Are mud blocks better than cement blocks?','For most homes in India, yes. Mud blocks are mostly earth with a small share of cement, so they carry far less carbon, keep rooms steadier in the heat and can be left exposed. A Kemp wall needs no plaster or paint, so once finishing is counted it costs about the same as a laterite wall. Cement blocks are strong and familiar, but almost always need plaster and paint.'],
+    ['Which is the best mud block in India?','Look for selected, sieved soil, a measured share of cement, high and even pressing in one mould, slow curing in shade, an interlocking shape and a face good enough to leave bare. Kemp by Ardhom is made around every one of these, and we believe it is the finest mud block in India. Ask us for a sample block and compare.'],
+    ['What are premium mud blocks?','Premium mud blocks are compressed stabilised earth blocks made to a higher standard: selected soil, exact sizes, dense pressing, slow curing and a finished face. Kemp is a premium interlocking mud block, made in Mangalore from red laterite earth and delivered across India.'],
+    ['Are mud blocks strong enough to build a house?','Yes, when they are well made and the building is designed by a structural engineer. Kemp wall blocks are made for outer, load-bearing and compound walls, pressed dense and cured slowly, with strength targets set with reference to IS 1725.'],
+    ['Is a mud block house cooler?','Dense earth walls store heat and release it slowly, so rooms warm up later in the day and feel steadier through the afternoon. Families living behind mud block walls usually notice the difference in their first summer.'],
+    ['What is the price of mud blocks?','Mud block prices in India vary with size, soil, cement content, pressing, curing and delivery distance. Compare finished walls rather than single blocks: a Kemp wall needs no plaster or paint, so its finished cost is close to a laterite wall. Use Plan your build for your block count and ask us for an exclusive quote.'],
+    ['Are interlocking mud blocks the same as CSEB?','Interlocking mud blocks are a type of compressed stabilised earth block (CSEB), pressed with a tongue on top and a groove below so each course locks into the last. Kemp is an interlocking CSEB made from red laterite earth.'],
+    ['Where can I buy mud blocks in Mangalore and across India?','Kemp is made in Mangalore, Karnataka, and delivered by the truckload to sites across India. Send us your plan and site location for a quote.'],
     ['What are Kemp blocks?','Kemp blocks are interlocking earth blocks made by Ardhom from sieved red laterite soil and a small share of cement, pressed and cured in shade. A tongue on top and a groove below lock each course into the next.'],
     ['Can Kemp be used for load-bearing walls?','Yes. The 8-inch wall block is made for outer, load-bearing and compound walls. Your structural engineer should confirm the design for your building, especially for multi-storey structures.'],
     ['Do you deliver across India?','Yes. Kemp is made in Mangalore and dispatched by the truckload to sites across India. Delivery is quoted per load, based on your location.'],
@@ -1534,7 +1590,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
     }
     {
       if(vis(appr)){var ap=prog(appr),a=Math.min(3,Math.floor(ap*4));apBar.style.transform='scaleX('+ap.toFixed(4)+')';
-        if(a!==lastA){lastA=a;slides.forEach(function(s,i){s.classList.toggle('on',i===a)});aimgs.forEach(function(m,i){m.classList.remove('was');if(m.classList.contains('on')&&i!==a){m.classList.remove('on');m.classList.add('was');setTimeout(function(){if(!m.classList.contains('on'))m.classList.remove('was')},1300)}else if(i===a)m.classList.add('on')});apK.textContent=slides[a].dataset.k;apN.textContent='0'+(a+1)}}
+        if(a!==lastA){lastA=a;slides.forEach(function(s,i){s.classList.toggle('on',i===a);s.classList.toggle('past',i<a)});aimgs.forEach(function(m,i){m.classList.remove('was');if(m.classList.contains('on')&&i!==a){m.classList.remove('on');m.classList.add('was');setTimeout(function(){if(!m.classList.contains('on'))m.classList.remove('was')},1300)}else if(i===a)m.classList.add('on')});apK.textContent=slides[a].dataset.k;apN.textContent='0'+(a+1)}}
       if(vis(svc)){var sr=prog(svc),n=panels.length,maxX=Math.max(0,track.scrollWidth-vw),x0=panels[0].offsetLeft,xs=sr*(n-1),pi=Math.min(n-2,Math.floor(xs)),pt=reduce?(xs-pi):ease(clamp((xs-pi-.18)/.64)),ra=Math.min(maxX,panels[pi].offsetLeft-x0),rb=Math.min(maxX,panels[pi+1].offsetLeft-x0),tx=ra+(rb-ra)*pt;track.style.transform='translate3d('+(-tx).toFixed(1)+'px,0,0)';if(cLive)cLive.style.strokeDashoffset=(1-sr).toFixed(4);
         var si=Math.min(n-1,Math.round(pi+pt));if(si!==lastS){lastS=si;panels.forEach(function(pn,i){pn.classList.toggle('on',i===si)});svK.textContent=panels[si].querySelector('.name').textContent;svN.textContent='0'+(si+1)}}
     }
@@ -1543,9 +1599,17 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
 
   /* infinite loop: a copy of the hero after the footer; reaching it returns to the top */
   var loopEl=document.createElement('div');loopEl.className='loopc';loopEl.id='loopc';loopEl.setAttribute('aria-hidden','true');
-  (function(){var h=$('main > section.hero');if(!h)return;var c=h.cloneNode(true);$$('[id]',c).forEach(function(e){e.removeAttribute('id')});$$('a,button',c).forEach(function(e){e.setAttribute('tabindex','-1')});c.querySelector('h1')&&(function(o){var p=document.createElement('p');p.className=o.className;p.innerHTML=o.innerHTML;o.replaceWith(p)})(c.querySelector('h1'));loopEl.appendChild(c);var f=$('#foot');f.parentNode.insertBefore(loopEl,f.nextSibling)})();
+  (function(){var h=$('main > section.hero');if(!h)return;var c=h.cloneNode(true);$$('[id]',c).forEach(function(e){e.removeAttribute('id')});$$('a,button',c).forEach(function(e){e.setAttribute('tabindex','-1')});c.querySelector('h1')&&(function(o){var p=document.createElement('p');p.className=(o.className+' h1c').trim();p.innerHTML=o.innerHTML;o.replaceWith(p)})(c.querySelector('h1'));loopEl.appendChild(c);var f=$('#foot');f.parentNode.insertBefore(loopEl,f.nextSibling)})();
   var looping=false;
-  function loopCheck(){if(looping||dvOpen||!sheet.hidden)return;var r=loopEl.getBoundingClientRect();if(r.top<=0.5){looping=true;var y=Math.max(0,-r.top);if(lenis){lenis.scrollTo(y,{immediate:true,force:true})}else window.scrollTo(0,y);lastY=-1;lastSec=null;setTimeout(function(){looping=false},120)}}
+  var velY=0,prevSY=0,coarse=matchMedia('(pointer:coarse)').matches;
+  function glide(v){var stop=false;function st(){stop=true}addEventListener('touchstart',st,{once:true,passive:true});addEventListener('wheel',st,{once:true,passive:true});
+    (function g(){if(stop||Math.abs(v)<.35||dvOpen)return;window.scrollTo(0,scrollY+v);v*=.955;requestAnimationFrame(g)})()}
+  function loopCheck(){var sy=scrollY;velY=velY*.6+(sy-prevSY)*.4;prevSY=sy;
+    if(looping||dvOpen||!sheet.hidden)return;var D=loopEl.getBoundingClientRect().top+sy;if(sy<D-.5)return;looping=true;
+    var smooth=lenis&&lenis.isScrolling==='smooth';
+    if(smooth){try{var a=lenis.animate;if(a){a.value-=D;a.to-=D;a.from-=D}lenis.targetScroll-=D;lenis.animatedScroll-=D;lenis._preventNextNativeScrollEvent=true;window.scrollTo(0,lenis.animatedScroll)}catch(e){lenis.scrollTo(sy-D,{immediate:true,force:true})}}
+    else{var v=velY;window.scrollTo(0,sy-D);if(lenis){try{lenis.targetScroll=lenis.animatedScroll=scrollY}catch(e){}}if(v>1.5)glide(Math.min(v,60))}
+    prevSY=scrollY;lastY=-1;lastSec=null;requestAnimationFrame(function(){looping=false})}
   var fab=$('#waFab'),footEl=$('#foot'),lastFab=0;
   function fabCheck(now){if(now-lastFab<100)return;lastFab=now;var vh=innerHeight,hide=false;
     if(dvOpen){var df=$('.dfoot',dv);if(df&&df.getBoundingClientRect().top<vh*.92)hide=true}
@@ -1556,7 +1620,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
   collect();
   function parList(imgs,txts,vh){
     for(var i=0;i<imgs.length;i++){var im=imgs[i],r=im.parentElement.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)continue;var off=(r.top+r.height/2-vh/2)/vh;im.style.setProperty('--py',(-off*r.height*.2).toFixed(1)+'px')}
-    for(var j=0;j<txts.length;j++){var el=txts[j],q=el.getBoundingClientRect();if(q.bottom<-300||q.top>vh+300)continue;var o=(q.top+q.height/2-vh/2)/vh;el.style.setProperty('--ty',(-o*vh*el._p*.5).toFixed(1)+'px')}
+    for(var j=0;j<txts.length;j++){var el=txts[j],q=el.getBoundingClientRect(),cur=el._ty||0,qt=q.top-cur;if(q.bottom-cur<-300||qt>vh+300)continue;var o=(qt+q.height/2-vh/2)/vh;el._ty=+(-o*vh*el._p*.5).toFixed(1);el.style.setProperty('--ty',(-o*vh*el._p*.5).toFixed(1)+'px')}
   }
 
   var links=$$('.hdr nav a'),progEl=$('#prog'),hdr=$('#hdr'),secs=$$('main > section, main > .mq, footer, #loopc > section'),lastSec=null;
@@ -1565,7 +1629,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
   function actScan(now){if(!coarse||now-lastAct<120)return;lastAct=now;var vh=innerHeight,list=document.querySelectorAll('.hov,.jrow,.tease');for(var i=0;i<list.length;i++){var r=list[i].getBoundingClientRect(),c=r.top+r.height/2,on=r.bottom>0&&r.top<vh&&c>vh*.22&&c<vh*.78;list[i].classList.toggle('act',on)}}
   var lastNav=0;
   function navProg(now){if(now-lastNav<80)return;lastNav=now;var s1=secAt(21);if(s1&&s1!==lastSec){lastSec=s1;var cs=getComputedStyle(s1),m=cs.backgroundColor.match(/[\d.]+/g);hdr.style.color=inv.style.color=cs.color;if(m)hdr.style.backgroundColor='rgba('+m[0]+','+m[1]+','+m[2]+',.88)'}
-    var curL=null;links.forEach(function(l){var s=document.getElementById(l.dataset.s);if(s&&s.getBoundingClientRect().top<=innerHeight*.4)curL=l});
+    var curL=null;if(loopEl.getBoundingClientRect().top>innerHeight*.5)links.forEach(function(l){var s=document.getElementById(l.dataset.s);if(s&&s.getBoundingClientRect().top<=innerHeight*.4)curL=l});
     links.forEach(function(l){l.classList.toggle('on',l===curL)});progEl.style.transform='scaleX('+(curL?(curL.getBoundingClientRect().left/innerWidth).toFixed(4):0)+')'}
 
   var dv=$('#dv'),dvImgs=[],dvTxt=[],lastFocus=null,lastY=-1,lastDvY=-1;
@@ -1622,10 +1686,10 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
         ['No kiln','Lower carbon','Kemp is cured slowly in shade, never fired. Mostly sieved earth, with a small share of cement.'],
         ['Kempu','Of the land','The red of the south-west coast’s laterite. It settles into a landscape instead of standing apart from it.'],
         ['Slow','Made to last','Pressed dense and cured slowly before it leaves the yard, for walls meant to stand for generations.']];
-      return headH('Why Kemp','Interlocking earth blocks · Made in Mangalore')+
+      return headH('Why Kemp','Premium interlocking mud blocks · Made in Mangalore')+
       '<div class="wy-st"><p class="rv">A wall that needs nothing added. <span>Pressed from red earth, locked course by course, and left bare for a lifetime.</span></p></div>'+
       '<figure class="hero-img rimg"><img class="px" src="/img/approach.webp" alt="Two Kemp blocks locked together"></figure>'+
-      '<div class="band t-taupe">'+sub('Six reasons','Why architects, builders and families choose an earth wall over laterite, brick and concrete.')+
+      '<div class="band t-clay" style="padding:8px 0 64px"><div class="bwall" data-wall aria-hidden="true"><div class="wrap"><div class="rows"></div></div><div class="cap"><span>Every course locks into the last</span><span>Move across the wall</span></div></div></div>'+'<div class="band t-taupe">'+sub('Six reasons','Why architects, builders and families choose an earth wall over laterite, brick and concrete.')+
         '<div class="wy">'+R.map(function(r,i){return '<div class="rv" style="transition-delay:'+((i%3)*.1)+'s"><span class="i">'+p2(i+1)+'</span><b>'+r[0]+'</b><h3>'+r[1]+'</h3><p>'+r[2]+'</p></div>'}).join('')+'</div></div>'+
       sub('Of the land, for the land','Kemp begins as the red soil under India’s south-west coast. It is sieved, pressed and cured, then built into walls that look like where they stand.')+
       '<div class="duo"><figure class="rimg"><img class="px" loading="lazy" src="/img/process-4.webp" alt="Rows of blocks curing in a sunlit yard"><figcaption>Curing in shade</figcaption></figure><figure class="rimg"><img class="px" loading="lazy" src="/img/philosophy-2.webp" alt="A shaded terracotta terrace with a plunge pool"><figcaption>Left bare, inside and out</figcaption></figure></div>'+
@@ -1667,7 +1731,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
     h+='</div><footer class="dfoot t-ivory">'+$('#foot').innerHTML+'</footer>';
     dv.innerHTML=h;
     dvImgs=$$('img.px',dv);dvTxt=$$('.tp',dv);dvTxt.forEach(function(el){el._p=parseFloat(el.dataset.p)||.1});
-    imgLoad(dv);observeReveal(dv);bindPrev(dv);if(key==='plan')initPlan(dv);
+    imgLoad(dv);observeReveal(dv);bindPrev(dv);if(key==='plan')initPlan(dv);$$('[data-wall]',dv).forEach(initWall);
     $('#dvBack',dv).addEventListener('click',goBack);
     var g=$('#dvGo',dv);if(g)g.addEventListener('click',function(){closeDetail();setTimeout(function(){var t=$('#contact');if(lenis)lenis.scrollTo(t,{duration:1.4});else t.scrollIntoView({behavior:'smooth'})},500)});
     var n=$('.nx',dv);if(n)n.addEventListener('click',function(){location.hash=this.dataset.k});
@@ -1685,6 +1749,20 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
     Object.keys(lim).forEach(function(id){var el=$('#'+id,root);el.addEventListener('input',calc);el.addEventListener('blur',function(){show(id,id==='p-fl'?Math.round(val(id)):val(id));calc()});el.addEventListener('keydown',function(e){if(e.key==='Enter')el.blur()})});
     $$('.stp button',root).forEach(function(b){b.addEventListener('click',function(){var id=b.dataset.t,v=val(id)+parseFloat(b.dataset.d),L=lim[id];v=Math.min(L[1],Math.max(L[0],v));show(id,v);calc()})});
     calc()}
+  function initWall(w){var rowsEl=$('.rows',w),bks=[],pts=null,mx=-9999,my=-9999,raf=0,tones=['#A9502F','#B5603F','#9E4A2C','#B9664A','#AD5634','#A24E2E'];
+    function build(){var W=rowsEl.clientWidth||w.clientWidth,bw=wide.matches?Math.max(96,W/12.5):Math.max(64,W/5.4),n=Math.ceil(W/(bw+5))+2;w.style.setProperty('--bw',bw.toFixed(1)+'px');
+      var h='',k=0;for(var r=0;r<(wide.matches?6:7);r++){h+='<div class="row">';for(var i=0;i<n;i++){k=(k*7+r*3+i*5+1)%tones.length;h+='<span class="bk" style="--c:'+tones[k]+'"></span>'}h+='</div>'}
+      rowsEl.innerHTML=h;bks=$$('.bk',rowsEl);pts=null}
+    function centres(){pts=bks.map(function(b){var r=b.getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2+scrollY]})}
+    function paint(){raf=0;if(!pts)centres();var R=wide.matches?260:170;bks.forEach(function(b,i){var dx=pts[i][0]-mx,dy=pts[i][1]-scrollY-my,d=Math.sqrt(dx*dx+dy*dy),f=Math.max(0,1-d/R);f=f*f*(3-2*f);
+      b.style.setProperty('--l',(-f*14).toFixed(1)+'px');b.style.setProperty('--b',(1+f*.22).toFixed(3))})}
+    function mv(x,y){mx=x;my=y;if(!raf)raf=requestAnimationFrame(paint)}
+    w.addEventListener('pointermove',function(e){mv(e.clientX,e.clientY)});
+    w.addEventListener('pointerdown',function(e){mv(e.clientX,e.clientY)});
+    w.addEventListener('touchmove',function(e){var t=e.touches[0];if(t)mv(t.clientX,t.clientY)},{passive:true});
+    w.addEventListener('pointerleave',function(){mv(-9999,-9999)});
+    addEventListener('resize',function(){build()});addEventListener('scroll',function(){pts=null},{passive:true});build()}
+  $$('[data-wall]').forEach(initWall);
   var stack=[],goingBack=false;
   function openDetail(key){if(!D[key])return;if(!dvOpen)lastFocus=document.activeElement;var was=dvOpen;render(key);dvOpen=true;dv.classList.add('on');if(was){dv.classList.remove('swap');void dv.offsetWidth;dv.classList.add('swap')}if(lenis)lenis.stop();setTimeout(function(){var b=$('#dvBack',dv);if(b)b.focus({preventScroll:true})},60)}
   function closeDetail(){if(!dvOpen)return;dvOpen=false;stack=[];dv.classList.remove('on');lastY=-1;lastSec=null;jp.classList.remove('on');if(lenis&&sheet.hidden)lenis.start();if(location.hash){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
