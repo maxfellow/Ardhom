@@ -70,12 +70,12 @@ section{position:relative;z-index:2;background:var(--bg);color:var(--fg)}
 /* images keep their true landscape shape */
 figure{margin:0;overflow:hidden;position:relative;max-width:100%;aspect-ratio:16/9;background:rgba(150,100,70,.16)}
 figure img{width:100%;height:100%;object-fit:cover}
-.px{translate:0 var(--py,0px);scale:1.14;opacity:0;transition:scale 1.4s var(--ez),filter .8s,opacity 1s ease;will-change:translate}
+.px{translate:0 var(--py,0px);scale:1.3;opacity:0;transition:scale 1.4s var(--ez),filter .8s,opacity 1s ease;will-change:translate}
 .px.ld{opacity:1}
-.rimg .px{clip-path:inset(16% 0 0 0);scale:1.3;transition:scale 1.8s var(--ez),clip-path 1.4s var(--ez2),filter .8s,opacity 1s ease}
-.rimg.in .px{clip-path:inset(0);scale:1.14}
+.rimg .px{clip-path:inset(16% 0 0 0);scale:1.42;transition:scale 1.8s var(--ez),clip-path 1.4s var(--ez2),filter .8s,opacity 1s ease}
+.rimg.in .px{clip-path:inset(0);scale:1.3}
 .hov{cursor:pointer}
-.hov:hover .px,.hov.act .px{scale:1.22}
+.hov:hover .px,.hov.act .px{scale:1.36}
 .hov figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(30,16,8,.38));opacity:0;transition:opacity .6s}
 .hov:hover figure::after,.hov.act figure::after{opacity:1}
 .hov .open{position:absolute;right:14px;bottom:14px;z-index:2;background:var(--ivory);color:#2E1A10;font-size:12px;padding:8px 12px;border-radius:999px;translate:0 10px;opacity:0;transition:opacity .4s,translate .5s var(--ez)}
@@ -189,7 +189,7 @@ body.ready .diag line{stroke-dashoffset:0}
 .kin{height:220vh}
 .kin .stick{position:sticky;top:0;height:100svh;display:flex;align-items:flex-end;padding-bottom:12vh;overflow:hidden}
 .kin .words{width:50%;text-align:right;font-size:clamp(52px,8.4vw,150px);line-height:.92;letter-spacing:-.045em}
-.kin .words span{display:block;will-change:transform}
+.kin .words span{display:block;will-change:transform,opacity,filter;opacity:0}
 .kin .words em{font-style:normal;color:var(--door)}
 .kin.k2 .stick{align-items:center;justify-content:center;padding:0}
 .kin.k2 .words{width:auto;text-align:left}
@@ -551,7 +551,6 @@ footer .fin a{text-decoration:none;border-bottom:1px solid currentColor}
 footer .wm{display:block;width:100%;padding:0 max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));box-sizing:border-box}
 footer .wm svg{width:100%;height:auto;display:block}
 @media (max-width:899px){footer .fin{grid-template-columns:1fr auto;padding-left:max(16px,env(safe-area-inset-left,0px))}footer .fin .c{grid-column:1;padding-left:0}}
-footer~*:not(script):not(style):not(link){position:fixed!important}
 
 /* DETAIL PAGES */
 .dv{position:fixed;inset:0;z-index:96;background:var(--ivory);color:#2E1A10;--bg:var(--ivory);--fg:#2E1A10;--muted:#6E5A49;--line:rgba(46,26,16,.14);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;clip-path:inset(100% 0 0 0);transition:clip-path .9s var(--ez2),visibility 0s .9s;visibility:hidden}
@@ -762,8 +761,11 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
 .btnx:hover{transform:translate3d(0,-2px,0);background:#fff}
 .dact{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
 .wa-send{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;background:#25D366;color:#0b3d20;text-decoration:none;font-size:13px;font-weight:500}
-.wa-fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:94;display:flex;align-items:center;gap:8px;height:52px;padding:0 18px 0 14px;border-radius:999px;background:#25D366;color:#0b3d20;text-decoration:none;font-size:14px;font-weight:500;box-shadow:0 10px 30px rgba(30,16,8,.25);transition:transform .5s var(--ez)}
-.wa-fab:hover{transform:translate3d(0,-3px,0)}
+.wa-fab{position:fixed;right:max(18px,calc(env(safe-area-inset-right,0px) + 12px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:97;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#B5603F;color:#fff;text-decoration:none;box-shadow:0 10px 30px -10px rgba(59,34,22,.55);transition:opacity .6s var(--ez),transform .7s var(--ez),filter .6s,background-color .3s}
+.wa-fab svg{width:26px;height:26px}
+.wa-fab span{display:none}
+.wa-fab:hover{background:#A9502F;transform:translate3d(0,-3px,0)}
+.wa-fab.off{opacity:0;transform:translate3d(0,24px,0) scale(.4);filter:blur(6px);pointer-events:none}
 @media (max-width:899px){
   .calc-g,.cmp-w,.pj-l{grid-template-columns:minmax(0,1fr)}
   .calc-f{grid-column:1;border-left:0}
@@ -778,8 +780,119 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
   .pj-c:nth-child(odd){border-left:0;padding-left:max(16px,env(safe-area-inset-left,0px))}
   .pj-c{border-bottom:1px solid var(--line)}
   .pj-a{padding-left:max(16px,env(safe-area-inset-left,0px))}
-  .wa-fab{height:48px;padding:0 14px}
-  .wa-fab span{display:none}
+  .wa-fab{width:52px;height:52px}
+}
+/* ===== v15: bands, loop, plan, why ===== */
+.bandx{padding:0}
+.bx{display:grid;grid-template-columns:var(--col) minmax(0,1fr) minmax(0,1.15fr);min-height:min(92svh,860px);text-decoration:none;color:inherit;border-top:1px solid var(--line)}
+.bx .t{grid-column:2;display:flex;flex-direction:column;justify-content:flex-end;gap:18px;padding:64px 40px 72px 8px;min-width:0}
+.bx .lb{font-size:13px;color:#E8B79C}
+.t-ivory .bx .lb,.t-taupe .bx .lb{color:var(--door)}
+.bx h2{font-size:clamp(40px,5.6vw,104px);line-height:.98;letter-spacing:-.045em;max-width:11ch;text-wrap:balance}
+.bx p.muted{max-width:38ch;font-size:16px;line-height:1.55}
+.bx .go{align-self:flex-start;display:inline-flex;gap:12px;align-items:center;font-size:13px;border-bottom:1px solid currentColor;padding-bottom:5px;transition:gap .6s var(--ez)}
+.bx:hover .go,.bx.act .go{gap:24px}
+.bx figure{position:relative;overflow:hidden;margin:0;min-height:100%}
+.bx figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bandx.alt .bx{grid-template-columns:var(--col) minmax(0,1.15fr) minmax(0,1fr)}
+.bandx.alt .bx figure{grid-column:2;grid-row:1}
+.bandx.alt .bx .t{grid-column:3;padding-left:40px;padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (max-width:899px){
+  .bx,.bandx.alt .bx{grid-template-columns:minmax(0,1fr);min-height:0}
+  .bx figure,.bandx.alt .bx figure{grid-column:1;grid-row:1;min-height:0}
+  .bx figure::before{content:"";display:block;padding-top:110%}
+  .bx .t,.bandx.alt .bx .t{grid-column:1;grid-row:2;padding:40px max(16px,env(safe-area-inset-right,0px)) 56px max(16px,env(safe-area-inset-left,0px))}
+  .bx h2{font-size:clamp(38px,11vw,56px)}
+}
+.loopc{min-height:100vh;overflow:hidden}
+.loopc .hero{min-height:100vh}
+
+/* plan page */
+.pl{display:grid;grid-template-columns:var(--col) minmax(0,1.1fr) minmax(0,1fr);border-top:1px solid var(--line)}
+.pl-in{grid-column:2;display:grid;align-content:start;border-left:1px solid var(--line)}
+.rg{display:grid;gap:14px;padding:28px 32px 30px 12px;border-bottom:1px solid var(--line)}
+.rg .h{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.rg label,.rg .lab{font-size:13px;color:var(--muted)}
+.rg output{font-size:clamp(28px,2.8vw,44px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.rg input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;background:transparent;cursor:pointer;--v:50%}
+.rg input[type=range]::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--door) var(--v),var(--line) var(--v))}
+.rg input[type=range]::-moz-range-track{height:2px;background:var(--line)}
+.rg input[type=range]::-moz-range-progress{height:2px;background:var(--door)}
+.rg input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--door);margin-top:-10px;border:0;box-shadow:0 0 0 6px rgba(181,96,63,.16);transition:box-shadow .3s}
+.rg input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--door);border:0;box-shadow:0 0 0 6px rgba(181,96,63,.16)}
+.rg input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 12px rgba(181,96,63,.2)}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.seg button{min-height:52px;font-size:18px;border:0;border-left:1px solid var(--line);border-radius:0;cursor:pointer;color:inherit;background:transparent;transition:background-color .4s,color .4s}
+.seg button:first-child{border-left:0}
+.seg button.on{background:var(--door);color:#fff}
+.pl-out{grid-column:3;margin:0;background:var(--walnut);color:#F2E9DC;--muted:#C9B49E;--line:rgba(242,233,220,.16);padding:36px max(16px,env(safe-area-inset-right,0px)) 36px 36px;display:grid;gap:22px;align-content:start;position:sticky;top:48px}
+.pl-out .k{font-size:13px;color:#E8B79C}
+.pl-out .bn{font-size:clamp(64px,8.4vw,150px);letter-spacing:-.055em;line-height:.9;font-variant-numeric:tabular-nums}
+.pl-out .bn small{display:block;font-size:15px;letter-spacing:0;color:var(--muted);margin-top:14px;line-height:1.4}
+.pl-out dl{display:grid;grid-template-columns:1fr auto;border-top:1px solid var(--line)}
+.pl-out dt,.pl-out dd{padding:14px 0;border-bottom:1px solid var(--line);margin:0}
+.pl-out dt{font-size:14px;color:var(--muted)}
+.pl-out dd{font-size:22px;letter-spacing:-.02em;text-align:right;font-variant-numeric:tabular-nums}
+.pl-out .wa{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:0 22px;background:var(--door);color:#fff;text-decoration:none;font-size:15px;transition:background-color .3s,transform .5s var(--ez)}
+.pl-out .wa:hover{background:#A9502F;transform:translate3d(0,-2px,0)}
+.pl-out .n{font-size:12px;line-height:1.55;color:var(--muted)}
+.vs{padding:96px 0 40px}
+.vs .vh{display:grid;grid-template-columns:var(--col) minmax(0,1fr);padding:0 max(16px,env(safe-area-inset-right,0px)) 56px 0}
+.vs .vh h2{grid-column:2;padding-left:8px;font-size:clamp(40px,6vw,112px);line-height:.96;letter-spacing:-.05em;max-width:14ch;text-wrap:balance}
+.vs .vh h2 em{font-style:normal;color:#E8B79C}
+.vs .vh p{grid-column:2;padding-left:8px;margin-top:22px;max-width:52ch;color:var(--muted)}
+.vr{display:grid;grid-template-columns:var(--col) minmax(0,.7fr) minmax(0,1.4fr) minmax(0,1fr);gap:0;border-top:1px solid var(--line);align-items:baseline}
+.vr>*{padding:28px 16px 30px 8px;min-width:0}
+.vr .f{grid-column:2;font-size:13px;color:var(--muted)}
+.vr .f b{display:block;font-weight:400;color:#E8B79C;margin-bottom:6px}
+.vr .kv{font-size:clamp(24px,2.6vw,42px);line-height:1.08;letter-spacing:-.03em}
+.vr .ot{font-size:14px;line-height:1.55;color:var(--muted);padding-right:max(16px,env(safe-area-inset-right,0px))}
+.vr .ot s{text-decoration:none;opacity:.7}
+.close-b{display:grid;grid-template-columns:var(--col) minmax(0,1fr);padding:110px max(16px,env(safe-area-inset-right,0px)) 110px 0}
+.close-b>div{grid-column:2;padding-left:8px;display:grid;gap:26px;justify-items:start}
+.close-b h2{font-size:clamp(40px,6vw,110px);line-height:.96;letter-spacing:-.05em;max-width:13ch;text-wrap:balance}
+.close-b .row{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center}
+.close-b .btnx{background:#F2E9DC}
+@media (max-width:899px){
+  .pl{grid-template-columns:minmax(0,1fr)}
+  .pl-in{grid-column:1;border-left:0}
+  .rg{padding:22px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
+  .pl-out{grid-column:1;position:static;padding:32px max(16px,env(safe-area-inset-right,0px)) 32px max(16px,env(safe-area-inset-left,0px))}
+  .vs{padding-top:64px}
+  .vs .vh,.close-b{grid-template-columns:minmax(0,1fr);padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .vs .vh h2,.vs .vh p,.close-b>div{grid-column:1;padding-left:0}
+  .vr{grid-template-columns:minmax(0,1fr);padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+  .vr>*{grid-column:1!important;padding:0}
+  .vr .f{padding-top:22px}.vr .kv{padding-top:8px}.vr .ot{padding:10px 0 24px}
+  .close-b{padding-top:72px;padding-bottom:72px}
+}
+/* why page */
+.wy-st{display:grid;grid-template-columns:var(--col) minmax(0,1fr);padding:16px max(16px,env(safe-area-inset-right,0px)) 72px 0}
+.wy-st p{grid-column:2;padding-left:8px;font-size:clamp(30px,3.9vw,68px);line-height:1.06;letter-spacing:-.035em;max-width:22ch;text-wrap:balance}
+.wy-st p span{color:var(--muted)}
+.wy{display:grid;grid-template-columns:var(--col) repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.wy>div{border-left:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 18px 54px 10px;display:grid;gap:14px;align-content:start;min-width:0}
+.wy>div:nth-child(3n+1){grid-column:2}
+.wy b{font-weight:400;font-size:clamp(44px,5vw,92px);letter-spacing:-.05em;line-height:.95;color:var(--door)}
+.t-walnut .wy b,.t-clay .wy b,.t-olive .wy b{color:#E8B79C}
+.wy h3{font-size:clamp(22px,1.9vw,30px);letter-spacing:-.025em;line-height:1.1}
+.wy p{font-size:15px;line-height:1.6;color:var(--muted);max-width:36ch}
+.wy .i{font-size:12px;color:var(--muted);letter-spacing:.06em}
+.duo{display:grid;grid-template-columns:var(--col) minmax(0,1fr) minmax(0,1fr);gap:0 12px;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 0}
+.duo figure{margin:0;overflow:hidden;position:relative}
+.duo figure:first-child{grid-column:2}
+.duo figure::before{content:"";display:block;padding-top:125%}
+.duo figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.duo figure:last-child{margin-top:18vh}
+.duo figcaption{position:absolute;left:14px;bottom:12px;font-size:12px;color:#F2E9DC;z-index:2}
+@media (max-width:899px){
+  .wy-st{grid-template-columns:minmax(0,1fr);padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .wy-st p{grid-column:1;padding-left:0;font-size:clamp(28px,8vw,40px)}
+  .wy{grid-template-columns:minmax(0,1fr)}
+  .wy>div,.wy>div:nth-child(3n+1){grid-column:1;border-left:0;padding:24px max(16px,env(safe-area-inset-right,0px)) 36px max(16px,env(safe-area-inset-left,0px))}
+  .duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .duo figure:first-child{grid-column:1}
+  .duo figure:last-child{margin-top:12vh}
 }
 </style>
 
@@ -838,11 +951,11 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
 <header class="hdr" id="hdr">
   <a class="mark" href="#top" aria-label="Ardhom, back to top"><svg viewBox="114 12 60 72" width="22" height="24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M126 17 V79"></path><path d="M126 61 A18 18 0 0 1 162 61 V79"></path></g><path d="M135 79 V67 A9 9 0 0 1 153 67 V79 Z" fill="#B5603F"></path></svg></a>
   <nav aria-label="Main">
-    <a href="#kemp" data-s="kemp">Kemp</a>
+    <a href="#why-kemp">Why Kemp</a>
     <a href="#range" data-s="range">Range</a>
     <a href="#works" data-s="works">Works</a>
+    <a href="#plan">Plan your build</a>
     <a href="#about">About</a>
-    <a href="#notes">Field Notes</a>
     <a href="#contact" data-s="contact">Contact</a>
   </nav>
   <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="sheet">Menu</button>
@@ -850,7 +963,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
 </header>
 <div class="sheet" id="sheet" hidden>
   <div class="top"><span>Ardhom</span><button id="closeBtn">Close</button></div>
-  <nav aria-label="Mobile"><a href="#kemp">Kemp</a><a href="#range">Range</a><a href="#works">Works</a><a href="#process">Process</a><a href="#projects">Projects</a><a href="#calculator">Calculator</a><a href="#about">About</a><a href="#notes">Field Notes</a><a href="#contact">Contact</a></nav>
+  <nav aria-label="Mobile"><a href="#why-kemp">Why Kemp</a><a href="#range">Range</a><a href="#works">Works</a><a href="#plan">Plan your build</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#about">About</a><a href="#notes">Field Notes</a><a href="#contact">Contact</a></nav>
 </div>
 <button class="invert" id="invert" type="button" aria-pressed="false" title="Invert colours"><span>Invert colours</span></button>
 
@@ -951,48 +1064,15 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
     </div>
     <div class="sample">
       <figure class="rimg"><img class="px" loading="lazy" src="/img/kemp-stack.webp" alt="A stack of Kemp blocks in a sunlit yard"></figure>
-      <div class="t"><h3>See it in your hand first.</h3><p class="muted">Ask for a sample block, wherever you are in India. Prices on request, delivery quoted by the load.</p><div class="lks"><a class="link" href="#contact">Request a sample block <span aria-hidden="true">→</span></a><a class="link" href="/kemp-spec-sheet.pdf" target="_blank" rel="noopener" download>Download spec sheet <span aria-hidden="true">↓</span></a></div></div>
+      <div class="t"><h3>See it in your hand first.</h3><p class="muted">Ask for a sample block, wherever you are in India. Prices on request, delivery quoted by the load.</p><div class="lks"><a class="link" href="#contact">Request a sample block <span aria-hidden="true">→</span></a><a class="link" href="/kemp-technical-brief.pdf" target="_blank" rel="noopener" download>Technical brief <span aria-hidden="true">↓</span></a></div></div>
     </div>
   </section>
 
-  <section class="calc t-taupe" id="calculator" aria-labelledby="cl-h">
-    <div class="shd"><h2 id="cl-h">Plan your walls</h2><p class="kn">A quick block estimate</p></div>
-    <div class="calc-g">
-      <form class="calc-f" id="calcF" novalidate>
-        <div class="f"><label for="c-area">Built-up area per floor (sq ft)</label><input id="c-area" type="number" inputmode="numeric" min="100" step="50" value="1500"></div>
-        <div class="f"><label for="c-fl">Floors</label><select id="c-fl"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
-        <div class="f"><label for="c-ht">Wall height per floor (ft)</label><input id="c-ht" type="number" inputmode="numeric" min="7" max="20" value="10"></div>
-        <div class="f"><label for="c-cw">Compound wall length (running ft, optional)</label><input id="c-cw" type="number" inputmode="numeric" min="0" step="10" value="0"></div>
-      </form>
-      <div class="calc-o" aria-live="polite">
-        <div class="ob"><b id="o-wall">0</b><span>Wall area, sq ft (approx.)</span></div>
-        <div class="ob big"><b id="o-blk">0</b><span>Kemp blocks needed</span></div>
-        <div class="ob"><b id="o-half">0</b><span>of these, half blocks</span></div>
-        <p class="cn">An estimate at about 2.4 blocks per sq ft of wall, after doors and windows, plus 4% for breakage. Your exact count comes from your drawings.</p>
-        <a class="link" id="calcGo" href="#contact">Get an exact quote <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="cmp t-ivory" id="compare" aria-labelledby="cp-h">
-    <div class="shd"><h2 id="cp-h">How Kemp compares</h2><p class="kn">For one sq ft of finished wall</p></div>
-    <div class="cmp-w">
-      <div class="cmp-s" tabindex="0" role="region" aria-label="Comparison table, scrolls sideways">
-        <table class="cmp-t">
-          <thead><tr><th scope="col"></th><th scope="col" class="k">Kemp earth block</th><th scope="col">Laterite stone</th><th scope="col">Red brick</th><th scope="col">Concrete block</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">How it is made</th><td class="k">Pressed and cured, not fired</td><td>Quarried and cut</td><td>Fired in a kiln</td><td>Cement-heavy, machine-made</td></tr>
-            <tr><th scope="row">Plaster needed</th><td class="k">No, can stay exposed</td><td>Usually</td><td>Usually</td><td>Always</td></tr>
-            <tr><th scope="row">Paint needed</th><td class="k">No</td><td>Usually</td><td>Usually</td><td>Always</td></tr>
-            <tr><th scope="row">Mortar between courses</th><td class="k">Thin bond</td><td>Thick bed</td><td>Thick bed</td><td>Medium</td></tr>
-            <tr><th scope="row">Size and finish</th><td class="k">Exact, pressed in a mould</td><td>Varies stone to stone</td><td>Varies kiln to kiln</td><td>Exact</td></tr>
-            <tr><th scope="row">On a hot afternoon</th><td class="k">Cool and steady</td><td>Cool</td><td>Moderate</td><td>Warms up</td></tr>
-            <tr><th scope="row">Finished wall cost</th><td class="k">About the same as laterite once plaster and paint are counted</td><td>Stone plus plaster and paint</td><td>Bricks, more mortar, plaster and paint</td><td>Lower material, plus plaster and paint</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="cmp-n">A general comparison for walls on India's south-west coast. Your own quote depends on design, site and finish.</p>
-    </div>
+  <section class="bandx t-olive" aria-labelledby="wk-h">
+    <a class="bx hov" href="#why-kemp" data-cursor="Open">
+      <div class="t"><p class="lb">Why Kemp</p><h2 id="wk-h" class="tp" data-p="-0.06">A wall that needs nothing added.</h2><p class="muted">Cooler rooms, no plaster, no paint, walls that rise true. Six reasons architects choose earth.</p><span class="go">Discover Kemp <span aria-hidden="true">→</span></span></div>
+      <figure class="rimg"><img class="px" loading="lazy" src="/img/philosophy-3.webp" alt="A facade of rotated earth blocks forming a diamond pattern"></figure>
+    </a>
   </section>
 
   <div class="mq t-clay" aria-hidden="true"><div class="tr" id="mqtr"></div></div>
@@ -1009,15 +1089,22 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
   </section>
 
   <section class="proj t-clay" id="projects" aria-labelledby="pj-h">
-    <div class="shd"><h2 id="pj-h">For big projects</h2><p class="kn">Builders · Resorts · Hospitals · Institutions</p></div>
-    <div class="pj-l"><p>From villa layouts to resorts and institutional campuses, Kemp supply is planned around your drawings and your build schedule, anywhere in India.</p></div>
+    <div class="shd"><h2 id="pj-h">For projects that last</h2><p class="kn">Architects · Developers · Hospitality · Institutions</p></div>
+    <div class="pj-l"><p>Kemp is specified for homes, resorts and institutions across India. Supply, laying and detailing are planned with your team from the first drawing.</p></div>
     <div class="pj-g">
-      <div class="pj-c"><span class="n">01</span><h3>Supply at scale</h3><p>Planned monthly supply, scheduled to your build, so walls never wait for blocks.</p></div>
-      <div class="pj-c"><span class="n">02</span><h3>Project pricing</h3><p>Volume pricing for large orders, quoted against your drawings and delivery plan.</p></div>
+      <div class="pj-c"><span class="n">01</span><h3>Planned supply</h3><p>Deliveries scheduled to your build, so walls never wait for blocks.</p></div>
+      <div class="pj-c"><span class="n">02</span><h3>Project pricing</h3><p>Pricing quoted against your drawings and delivery plan.</p></div>
       <div class="pj-c"><span class="n">03</span><h3>Laying teams</h3><p>Masons trained in interlocking walls, arranged for your site wherever it is.</p></div>
-      <div class="pj-c"><span class="n">04</span><h3>Design support</h3><p>Block counts, wall layouts, custom blocks and a technical spec sheet for your architect.</p></div>
+      <div class="pj-c"><span class="n">04</span><h3>Detailing</h3><p>Block counts, wall layouts, custom blocks and a technical brief for your architect.</p></div>
     </div>
-    <div class="pj-a"><a class="btnx" href="#contact" data-proj="1">Plan a project</a><a class="link" href="/kemp-spec-sheet.pdf" target="_blank" rel="noopener" download>Download spec sheet <span aria-hidden="true">↓</span></a></div>
+    <div class="pj-a"><a class="btnx" href="#contact" data-proj="1">Begin a project</a><a class="link" href="/kemp-technical-brief.pdf" target="_blank" rel="noopener">Technical brief <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <section class="bandx alt t-walnut" aria-labelledby="pb-h">
+    <a class="bx hov" href="#plan" data-cursor="Plan">
+      <div class="t"><p class="lb">Plan your build</p><h2 id="pb-h" class="tp" data-p="-0.06">Know your wall, block by block.</h2><p class="muted">Your Kemp count in a minute, and what an earth wall saves you over laterite, brick and concrete.</p><span class="go">Plan your build <span aria-hidden="true">→</span></span></div>
+      <figure class="rimg"><img class="px" loading="lazy" src="/img/service-guidance.webp" alt="A floor plan and a sample block on an oak table"></figure>
+    </a>
   </section>
 
   <section class="svc t-olive" id="services" aria-labelledby="svc-h">
@@ -1027,7 +1114,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
         <article class="panel on"><h3 class="name">Supply</h3><div class="row"><figure><img class="px" loading="lazy" src="/img/service-supply.webp" alt="A truck loaded with Kemp blocks on an open road"></figure><p class="muted">Kemp blocks dispatched by the load to sites across India, on the day we commit to.</p></div></article>
         <article class="panel"><h3 class="name">Laying</h3><div class="row"><figure><img class="px" loading="lazy" src="/img/service-laying.webp" alt="A mason placing blocks on a rising wall"></figure><p class="muted">Masons who know interlocking walls, arranged through us so the blocks are laid right.</p></div></article>
         <article class="panel"><h3 class="name">Guidance</h3><div class="row"><figure><img class="px" loading="lazy" src="/img/service-guidance.webp" alt="A floor plan and sample block on an oak table"></figure><p class="muted">Block counts, wall layouts and details worked out with your architect before work starts.</p></div></article>
-        <article class="panel"><h3 class="name">Bulk</h3><div class="row"><figure><img class="px" loading="lazy" src="/img/service-bulk.webp" alt="Aerial view of a site with pallets of blocks"></figure><p class="muted">Planned monthly supply and pricing for builders, developers and large projects.</p></div></article>
+        <article class="panel"><h3 class="name">Bulk</h3><div class="row"><figure><img class="px" loading="lazy" src="/img/service-bulk.webp" alt="Aerial view of a site with pallets of blocks"></figure><p class="muted">Planned monthly supply and pricing for architects, developers and institutions.</p></div></article>
         <article class="panel"><h3 class="name">Custom</h3><div class="row"><figure><img class="px" loading="lazy" src="/img/service-custom.webp" alt="Earth blocks in custom shapes on a plinth"></figure><p class="muted">Corner, lintel and jaali blocks made to your drawings.</p></div></article>
       </div>
       <div class="count"><span id="svK">Supply</span><span><span id="svN">01</span> <em>|</em> 05</span></div>
@@ -1046,7 +1133,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
       <div class="facts">
         <div class="fact"><p class="k">Made in</p><h3>Mangaluru, India</h3><p>Pressed and cured in our yard on the Karavali coast, from red laterite earth.</p></div>
         <div class="fact"><p class="k">Delivered</p><h3>Across India</h3><p>Dispatched by the load to homes, resorts and projects nationwide.</p></div>
-        <div class="fact"><p class="k">Built for</p><h3>Any scale</h3><p>From a single home to large projects with planned monthly supply.</p></div>
+        <div class="fact"><p class="k">Built for</p><h3>Any scale</h3><p>From a single home to whole campuses, with supply planned month by month.</p></div>
       </div>
 
     </div>
@@ -1084,13 +1171,14 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
     </div>
   </section>
 
-  <a class="wa-fab" href="https://wa.me/918660167354?text=Hello%20Ardhom%2C%20I%27d%20like%20to%20know%20more%20about%20Kemp%20blocks." target="_blank" rel="noopener" aria-label="Chat with Ardhom on WhatsApp"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg><span>WhatsApp</span></a>
 </main>
+
+<a class="wa-fab" id="waFab" href="https://wa.me/918660167354?text=Hello%20Ardhom%2C%20I%27d%20like%20to%20know%20more%20about%20Kemp%20blocks." target="_blank" rel="noopener" aria-label="Chat with Ardhom on WhatsApp"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg></a>
 
 <footer id="foot" class="t-ivory">
   <div class="fgrid">
     <div class="fc"><p class="k">Ardhom</p><p>Building materials from the earth. Kemp interlocking earth blocks, made in Mangaluru and delivered across India.</p></div>
-    <div class="fc"><p class="k">Explore</p><a href="#kemp">Kemp</a><a href="#range">The Kemp range</a><a href="#works">Featured works</a><a href="#projects">For big projects</a><a href="#calculator">Block calculator</a><a href="#compare">How Kemp compares</a><a href="#process">Process</a><a href="#contact">Contact</a></div>
+    <div class="fc"><p class="k">Explore</p><a href="#why-kemp">Why Kemp</a><a href="#range">The Kemp range</a><a href="#works">Featured works</a><a href="#projects">Projects</a><a href="#plan">Plan your build</a><a href="/kemp-technical-brief.pdf" target="_blank" rel="noopener">Technical brief</a></div>
     <div class="fc"><p class="k">Company</p><a href="#about">About Ardhom</a><a href="#notes">Field Notes</a><a href="#faq">Questions (FAQ)</a></div>
     <div class="fc"><p class="k">Legal</p><a href="#privacy">Privacy policy</a><a href="#terms">Terms of use</a><p class="k" style="margin-top:14px">Write to us</p><p>hello@ardhom.com</p></div>
   </div>
@@ -1183,7 +1271,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
         ["Firing and cement","Fired bricks are made by baking clay in kilns at high temperatures, burning coal, wood or other fuels, often in kilns that are inefficient and polluting. Cement is made by heating limestone to very high temperatures, a process that releases carbon dioxide both from the fuel and from the limestone itself. Globally, cement production is one of the largest single industrial sources of carbon dioxide."],
         ["What a pressed earth block avoids","A Kemp block is not fired. It is pressed from sieved earth and a small share of cement, then cured slowly in the shade. There is no kiln, and the amount of cement is small compared with a concrete block. Most of the block is soil, which needs digging, drying and sieving, but not heating. That is the heart of why earth blocks have a lighter footprint than fired bricks or cement-heavy blocks."],
         ["Less material on top","The savings continue after the wall is built. Because Kemp walls can be left exposed, many houses need no plaster and no paint on large areas of wall. The thin bond between interlocking courses uses less mortar than a conventional brick wall. Every bag of cement and every tin of paint you do not use is energy you do not spend, and money you keep."],
-        ["Being honest about transport","Earth blocks are heavy, and moving them a long way by truck adds to their footprint. We do not pretend otherwise. We plan full loads, efficient routes and staged deliveries, and for large projects far from our yard we are glad to discuss the best way to supply the region. As Ardhom grows, producing closer to where people build is part of our plan."],
+        ["Being honest about transport","Earth blocks are heavy, and moving them a long way by truck adds to their footprint. We do not pretend otherwise. We plan full loads, efficient routes and staged deliveries, and for projects far from our yard we are glad to discuss the best way to supply the region. As Ardhom grows, producing closer to where people build is part of our plan."],
         ["Comfort is part of the story","A wall's footprint does not end at construction. Walls that keep rooms calmer in the heat can reduce the hours of fans and air conditioning a household needs over decades. Combined with good design, shade and ventilation, an earth-walled home can stay comfortable with less energy, year after year. A lower-carbon wall is not only about how it was made, but about how it lets you live."]]},
     {k:'n-design',t:"Designing with Kemp: notes for architects",c:"Design",d:"9 Sep 2026",img:"project-office",
      l:"On the drawing board, a wall is a pair of lines. On site, it is hundreds of blocks laid by hand, course by course. Designing well with interlocking earth blocks means letting those two meet: drawing walls the block can build cleanly, without cutting, patching or hiding. These notes are for architects and designers starting their first project with Kemp.",
@@ -1198,7 +1286,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
      s:[["Your first message","It usually starts with a photo of a floor plan, or a simple question: how many blocks for a 1,500 square foot house? Send us what you have: drawings, built-up area, your site location and when you plan to start. The more we know, the more accurate the quote. You can use the enquiry form on our home page to prepare the message, then send it to us on WhatsApp or by email."],
         ["The quote","From your drawings we work out the number of wall, partition and half blocks, add a small allowance for breakage, and calculate how many truckloads that comes to. Delivery is priced per load, based on the distance to your site. The quote sets out quantities, prices, delivery terms and what happens at unloading, so there are no surprises later."],
         ["See it first","Many people like to hold a block before they commit. We can arrange a sample block, so you can see the colour, the face and the interlock for yourself, and show it to your architect and mason. If you are building nearby, you are welcome to see the blocks at the yard."],
-        ["Scheduling the loads","Once you confirm, we plan deliveries around your build. There is no point in every block arriving on day one and sitting on site through the rains. We schedule loads to match your masons' progress, so blocks arrive as the walls are ready to rise. For large projects, we plan a monthly supply in advance."],
+        ["Scheduling the loads","Once you confirm, we plan deliveries around your build. There is no point in every block arriving on day one and sitting on site through the rains. We schedule loads to match your masons' progress, so blocks arrive as the walls are ready to rise. For projects of any scale, we plan a monthly supply in advance."],
         ["On the day","Before the truck arrives, make sure the road to your site can take a loaded truck, and that there is level, well-drained space to stack blocks off the ground. When it arrives, check the count and the condition of the blocks with the driver before unloading. Stack them on pallets or planks and cover them if rain is likely. Blocks should be handled, never thrown."],
         ["After delivery","Our work does not end at the gate. If you need masons who know interlocking walls, we can arrange a laying team. If questions come up during the build, about corners, openings or finishes, ask us. And when your home is finished, we would love to see it. Every house built with Kemp is part of the story we are trying to tell."]]}
   ];
@@ -1265,7 +1353,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
       more:[['The idea','A home that feels grounded in its landscape: simple stacked volumes in warm earth, a long pool reflecting the walls, and a garden of agave, olive and bougainvillea.'],['The walls','Outer walls in 8-inch wall blocks left exposed, inner walls in partition blocks, and half blocks at every corner and opening, so no block is cut on site.'],['Light and climate','Deep window reveals and roof overhangs shade the glass, and the pool cools the air as it moves into the living spaces in the evening.']]},
     'work-hospital':{kind:'w',title:'Healing Hospital',tag:'Healthcare · Concept visual',img:'project-hospital',
       lede:['A calm hospital built around a green courtyard, where long verandahs keep patients in shade and in view of trees.','Kemp walls give the wards a cool, quiet interior. Rhythmic vertical fins, made from custom blocks, shade the tall windows, and a shallow water channel runs through the courtyard.'],
-      specs:[['Type','Healthcare'],['Scale','Large project, planned monthly supply'],['Blocks','Wall, partition and custom fin blocks'],['Features','Courtyard, verandahs, shading fins'],['Finish','Exposed earth'],['Status','Concept visual']],
+      specs:[['Type','Healthcare'],['Scale','Institutional, planned monthly supply'],['Blocks','Wall, partition and custom fin blocks'],['Features','Courtyard, verandahs, shading fins'],['Finish','Exposed earth'],['Status','Concept visual']],
       feat:[['Calm interiors','Dense earth walls slow the afternoon heat.'],['Shading fins','Custom blocks shade every window.'],['Planned supply','Monthly deliveries matched to the build.']],
       gal:['?A long shaded verandah beside the green courtyard, wooden benches against a Kemp wall, dappled light, 16:9','?A hospital ward interior with a tall window, earth wall and white linen, calm morning light, 16:9'],
       more:[['The idea','Healing spaces that feel like shelter rather than machines: shade, greenery, natural light and quiet, with every room looking onto the courtyard.'],['The walls','Exposed Kemp walls for wards and corridors, with custom fin blocks along the facades to break the sun while letting light and air through.'],['Scale and supply','A building of this size is supplied in planned monthly loads, matched to each phase of construction so blocks never sit waiting on site.']]},
@@ -1286,7 +1374,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
   function readMins(b){var n=(b.l+' '+b.s.map(function(s){return s[0]+' '+s[1]}).join(' ')).split(/\s+/).length;return Math.max(3,Math.round(n/200))}
   BLOG.forEach(function(b){b.r=readMins(b);ORDER.b.push(b.k);D[b.k]={kind:'b',title:b.t,tag:b.c+' · '+b.d+' · '+b.r+' min read',img:b.img,lede:b.l,sec:b.s}});
   Object.keys(LEGAL).forEach(function(k){var x=LEGAL[k];D[k]={kind:'l',title:x.t,tag:'Last updated 11 November 2026',lede:x.l,sec:x.s}});
-  D.about={kind:'x',title:'About Ardhom'};D.notes={kind:'x',title:'Field Notes'};D.faq={kind:'x',title:'Questions'};
+  D.about={kind:'x',title:'About Ardhom'};D.plan={kind:'x',title:'Plan your build'};D['why-kemp']={kind:'x',title:'Why Kemp'};D.notes={kind:'x',title:'Field Notes'};D.faq={kind:'x',title:'Questions'};
   var ABOUT={
     lede:'An Indian initiative to bring the earth back into how India builds.',
     lede2:'India will build more homes in the coming decades than at almost any time in its history. Ardhom exists so that a meaningful share of them are built from the earth: walls that stay cooler, last longer and ask less of the land. We are a young company with a long horizon, and Kemp interlocking earth blocks are where we begin.',
@@ -1295,7 +1383,7 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
     note:['Ardhom began with a simple feeling: that the earth beneath our feet is enough. Our native soil, the red earth of the coast, has sheltered families here for generations. We wanted to build with it again, properly, and to share it with the rest of India.',
       'We find our inspiration in nature. In the colour of laterite after the first rain, in the shade of a verandah at noon, in walls that grow more beautiful as they age. Modern building has given us speed, but it has often taken away that beauty and that sense of belonging. We believe we can have both.',
       'Mother Earth has given us everything we build with, and we believe we owe something back: to use her carefully, to waste less, to make homes that need less energy to live in, and to create good, steady work for the people who press, cure, carry and lay every block.',
-      'Kemp is our first step. It is a humble block, but it carries everything we believe in: stay rooted, be honest about what things are made of, and build for the long term. This is a big journey, and we are only at the beginning. We hope you will build it with us.'],
+      'Kemp is our first step. It is a humble block, but it carries everything we believe in: stay rooted, be honest about what things are made of, and build for the long term. This is a long journey, and we are only at the beginning. We hope you will build it with us.'],
     roadNote:'Kemp is the first step of a much larger plan.',
     road:[['Now · Kemp','Interlocking earth blocks made in Mangaluru and delivered across India, with laying teams and design support for every project.'],['Next · A family of earth materials','More products made from the earth for walls, floors and the home, all under the Ardhom name.'],['Ahead · Closer to every site','Production partners in more regions, so earth is pressed near where it is built, and training for masons in every state.']],
     ambNote:'Our targets for 2030. These are ambitions we are working towards, not results.',
@@ -1400,13 +1488,17 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
   var appr=$('#approach'),slides=$$('.slide',appr),aimgs=$$('.media img',appr),apK=$('#apK'),apN=$('#apN'),apBar=$('#apBar');
   var svc=$('#services'),track=$('#track'),panels=$$('.panel',track),svK=$('#svK'),svN=$('#svN');
   var lt1=$('#lt1'),lt2=$('#lt2'),ct=$('#contact'),wide=window.matchMedia('(min-width: 900px)'),lastA=-1,lastS=-1;
+  function kin(sec,spans,dir){var r=sec.getBoundingClientRect(),vh=innerHeight,p=clamp((vh-r.top)/(r.height+vh)),amp=wide.matches?22:14;
+    spans.forEach(function(s,i){var a=clamp((p-.1-i*.05)/.3),b=clamp((p-.6-i*.045)/.28),ea=1-Math.pow(1-a,3),eb=b*b,d=dir[i%dir.length],
+      x=d*amp*(1-ea)-d*amp*eb+d*(.5-p)*3,o=ea*(1-eb),bl=(1-ea)*14+eb*16,sc=1+(1-ea)*.06-eb*.04;
+      s.style.transform='translate3d('+x.toFixed(2)+'vw,0,0) scale('+sc.toFixed(3)+')';s.style.opacity=o.toFixed(3);s.style.filter=bl>.2?'blur('+bl.toFixed(1)+'px)':'none'})}
   function vis(el){var r=el.getBoundingClientRect();return r.bottom>-50&&r.top<innerHeight+50}
   function scenes(){
     var vw=innerWidth,vh=innerHeight;
     if(vis(kw)){var kp=reduce?1:prog(kw);kwL.forEach(function(s,i){var t=clamp((kp*1.8)-i*.12);s.style.transform='translate3d(0,'+((1-ease(t))*100).toFixed(2)+'%,0)'});
       var so=clamp((kp-.2)*4);stats.style.opacity=so;stats.style.transform='translate3d(0,'+((1-so)*30).toFixed(1)+'px,0)';if(kp>.25)countUp();kwTop.style.transform='translate3d(0,'+(-kp*40).toFixed(1)+'px,0)'}
-    if(vis(k1)){var e=1-Math.pow(1-prog(k1),3);k1s.forEach(function(s,i){s.style.transform=reduce?'':'translate3d('+((1-e)*(i===1?-40:40)*(i+1)).toFixed(2)+'vw,0,0)'})}
-    if(vis(k2)){var q=prog(k2);k2s.forEach(function(s,i){s.style.transform=reduce?'':'translate3d('+((.5-q)*(i%2?-30:30)*(i+1)*(wide.matches?.6:.18)).toFixed(2)+'vw,0,0)'})}
+    if(vis(k1))kin(k1,k1s,[1,-1,1]);
+    if(vis(k2))kin(k2,k2s,[-1,1,-1]);
     if(vis(door)){
       var d=reduce?1:ease(Math.min(1,prog(door)*1.25)),bw=Math.min(vw*.26,320),bh=Math.min(vh*.56,480),w=lerp(bw,vw,d),h=lerp(bh,vh,d),rad=lerp(w/2,0,Math.min(1,d*1.15)),cyy=vh*lerp(.54,.5,d),ix=(vw-w)/2,it=cyy-h/2,ib=vh-(cyy+h/2);
       portal.style.clipPath='inset('+it.toFixed(1)+'px '+ix.toFixed(1)+'px '+ib.toFixed(1)+'px '+ix.toFixed(1)+'px round '+rad.toFixed(1)+'px '+rad.toFixed(1)+'px 0 0)';
@@ -1432,15 +1524,25 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
     if(vis(ct)&&!reduce){var cr=ct.getBoundingClientRect(),cp=clamp((1-(cr.top/vh))*1.7);lt1.style.transform='translate3d('+((1-cp)*-12).toFixed(2)+'vw,0,0)';lt2.style.transform='translate3d('+((1-cp)*18).toFixed(2)+'vw,0,0)'}
   }
 
+  /* infinite loop: a copy of the hero after the footer; reaching it returns to the top */
+  var loopEl=document.createElement('div');loopEl.className='loopc';loopEl.id='loopc';loopEl.setAttribute('aria-hidden','true');
+  (function(){var h=$('main > section.hero');if(!h)return;var c=h.cloneNode(true);$$('[id]',c).forEach(function(e){e.removeAttribute('id')});$$('a,button',c).forEach(function(e){e.setAttribute('tabindex','-1')});c.querySelector('h1')&&(function(o){var p=document.createElement('p');p.className=o.className;p.innerHTML=o.innerHTML;o.replaceWith(p)})(c.querySelector('h1'));loopEl.appendChild(c);var f=$('#foot');f.parentNode.insertBefore(loopEl,f.nextSibling)})();
+  var looping=false;
+  function loopCheck(){if(looping||dvOpen||!sheet.hidden)return;var r=loopEl.getBoundingClientRect();if(r.top<=0.5){looping=true;var y=Math.max(0,-r.top);if(lenis){lenis.scrollTo(y,{immediate:true,force:true})}else window.scrollTo(0,y);lastY=-1;lastSec=null;setTimeout(function(){looping=false},120)}}
+  var fab=$('#waFab'),footEl=$('#foot'),lastFab=0;
+  function fabCheck(now){if(now-lastFab<100)return;lastFab=now;var vh=innerHeight,hide=false;
+    if(dvOpen){var df=$('.dfoot',dv);if(df&&df.getBoundingClientRect().top<vh*.92)hide=true}
+    else{if(footEl.getBoundingClientRect().top<vh*.92&&loopEl.getBoundingClientRect().top>vh*.08)hide=true}
+    if(!sheet.hidden)hide=true;fab.classList.toggle('off',hide)}
   var pimgs=[],ptxt=[];
-  function collect(){pimgs=$$('main img.px');ptxt=$$('main .tp');ptxt.forEach(function(el){el._p=parseFloat(el.dataset.p)||.1})}
+  function collect(){pimgs=$$('main img.px, #loopc img.px');ptxt=$$('main .tp, #loopc .tp');ptxt.forEach(function(el){el._p=parseFloat(el.dataset.p)||.1})}
   collect();
   function parList(imgs,txts,vh){
-    for(var i=0;i<imgs.length;i++){var im=imgs[i],r=im.parentElement.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)continue;var off=(r.top+r.height/2-vh/2)/vh;im.style.setProperty('--py',(-off*r.height*.12).toFixed(1)+'px')}
+    for(var i=0;i<imgs.length;i++){var im=imgs[i],r=im.parentElement.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)continue;var off=(r.top+r.height/2-vh/2)/vh;im.style.setProperty('--py',(-off*r.height*.2).toFixed(1)+'px')}
     for(var j=0;j<txts.length;j++){var el=txts[j],q=el.getBoundingClientRect();if(q.bottom<-300||q.top>vh+300)continue;var o=(q.top+q.height/2-vh/2)/vh;el.style.setProperty('--ty',(-o*vh*el._p*.5).toFixed(1)+'px')}
   }
 
-  var links=$$('.hdr nav a'),progEl=$('#prog'),hdr=$('#hdr'),secs=$$('main > section, main > .mq, footer'),lastSec=null;
+  var links=$$('.hdr nav a'),progEl=$('#prog'),hdr=$('#hdr'),secs=$$('main > section, main > .mq, footer, #loopc > section'),lastSec=null;
   function secAt(y){for(var i=0;i<secs.length;i++){var r=secs[i].getBoundingClientRect();if(r.top<=y&&r.bottom>y)return secs[i]}return null}
   var lastAct=0,coarse=!fine;
   function actScan(now){if(!coarse||now-lastAct<120)return;lastAct=now;var vh=innerHeight,list=document.querySelectorAll('.hov,.jrow,.tease');for(var i=0;i<list.length;i++){var r=list[i].getBoundingClientRect(),c=r.top+r.height/2,on=r.bottom>0&&r.top<vh&&c>vh*.22&&c<vh*.78;list[i].classList.toggle('act',on)}}
@@ -1451,7 +1553,8 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
 
   var dv=$('#dv'),dvImgs=[],dvTxt=[],lastFocus=null,lastY=-1,lastDvY=-1;
   function frame(t){if(lenis)lenis.raf(t);
-    if(!dvOpen){var y=scrollY;if(y!==lastY){lastY=y;scenes();if(!reduce)parList(pimgs,ptxt,innerHeight)}navProg(t)}
+    if(!dvOpen){loopCheck();var y=scrollY;if(y!==lastY){lastY=y;scenes();if(!reduce)parList(pimgs,ptxt,innerHeight)}navProg(t)}
+    if(fab)fabCheck(t);
     else if(!reduce&&dv.scrollTop!==lastDvY){lastDvY=dv.scrollTop;parList(dvImgs,dvTxt,innerHeight)}
     actScan(t);
     if(fine){cx+=(mx-cx)*.22;cy+=(my-cy)*.22;cur.style.transform='translate3d('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px,0)';if(jp.classList.contains('on')){jx+=(mx+30-jx)*.12;jy+=(my-120-jy)*.12;jp.style.translate=jx.toFixed(1)+'px '+jy.toFixed(1)+'px'}}
@@ -1473,6 +1576,44 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
   function sub(t,p){return '<div class="sub"><h2 class="wsplit">'+words(t)+'</h2>'+(p?'<p class="rv">'+p+'</p>':'')+'</div>'}
   function ctaH(label,note){return '<div class="cta"><div class="rv"><button type="button" class="go" id="dvGo">'+label+'</button><span class="muted lb">'+note+'</span></div></div>'}
   var PAGES={
+    plan:function(){
+      var vs=[['How it is made','Pressed and cured. Never fired.','Laterite is quarried and cut · Brick is fired in a kiln · Concrete block is cement-heavy'],
+        ['Plaster','None. The wall stays bare.','Laterite and brick usually need it · Concrete block always does'],
+        ['Paint','None. The colour is the earth.','Repainted every few years on laterite, brick and concrete'],
+        ['Mortar','A thin bond. Courses lock.','Thick mortar beds for laterite and brick'],
+        ['Precision','Exact, from one mould.','Laterite and brick vary piece to piece'],
+        ['Afternoon','Cool and steady indoors.','Concrete block warms up · Brick is moderate'],
+        ['Finished wall','About the price of laterite, once plaster and paint are counted.','Every other wall still has its finish to pay for']];
+      return headH('Plan your build','Your Kemp count in a minute · Delivered across India')+
+      '<div class="pl" id="plc"><div class="pl-in">'+
+        '<div class="rg rv"><div class="h"><label for="p-area">Built-up area per floor</label><output id="o-area">1,800 sq ft</output></div><input type="range" id="p-area" min="500" max="6000" step="50" value="1800"></div>'+
+        '<div class="rg rv"><div class="h"><span class="lab" id="fl-l">Floors</span><output id="o-fl">2</output></div><div class="seg" role="group" aria-labelledby="fl-l"><button type="button" data-f="1">1</button><button type="button" data-f="2" class="on">2</button><button type="button" data-f="3">3</button><button type="button" data-f="4">4</button></div></div>'+
+        '<div class="rg rv"><div class="h"><label for="p-ht">Wall height per floor</label><output id="o-ht">10 ft</output></div><input type="range" id="p-ht" min="8" max="14" step="0.5" value="10"></div>'+
+        '<div class="rg rv"><div class="h"><label for="p-cw">Compound wall</label><output id="o-cw">None</output></div><input type="range" id="p-cw" min="0" max="800" step="10" value="0"></div>'+
+      '</div><aside class="pl-out" aria-live="polite"><p class="k">Kemp blocks for your build</p><p class="bn"><span id="o-blk">0</span><small>An estimate. Your exact count comes from your drawings.</small></p>'+
+        '<dl><dt>Wall area</dt><dd id="o-wall">0</dd><dt>Half blocks, within the count</dt><dd id="o-half">0</dd><dt>Wall faces left bare, no plaster</dt><dd id="o-bare">0</dd></dl>'+
+        '<a class="wa" id="p-wa" href="https://wa.me/918660167354" target="_blank" rel="noopener"><span>Get an exact quote on WhatsApp</span><span aria-hidden="true">→</span></a>'+
+        '<p class="n">About 2.4 blocks per sq ft of wall, after doors and windows, with 4% for breakage.</p></aside></div>'+
+      '<div class="band t-walnut vs"><div class="vh"><h2 class="rv">The cost of laterite. <em>None of the plaster.</em></h2><p class="rv">What one square foot of finished wall asks of you, in Kemp and in the walls it replaces.</p></div>'+
+        vs.map(function(r,i){return '<div class="vr rv"><p class="f"><b>'+p2(i+1)+'</b>'+r[0]+'</p><p class="kv">'+r[1]+'</p><p class="ot">'+r[2]+'</p></div>'}).join('')+
+        '<div class="vh" style="padding-top:28px;padding-bottom:0"><p class="rv" style="font-size:13px">A general comparison for walls on India’s south-west coast. Your quote depends on design, site and finish.</p></div></div>'+
+      '<div class="band t-clay close-b"><div class="rv"><h2>Hold a Kemp block before you build.</h2><div class="row"><button type="button" class="btnx" id="dvGo">Request a sample block</button><a class="link" href="/kemp-technical-brief.pdf" target="_blank" rel="noopener">Technical brief <span aria-hidden="true">↗</span></a></div></div></div>'},
+    'why-kemp':function(){
+      var R=[['8 in','Cooler rooms','An eight-inch earth wall holds back the day’s heat and lets it go slowly through the night. Rooms stay steady through a coastal afternoon.'],
+        ['0 coats','No plaster, no paint','Every face is pressed smooth and true, so the wall can stay exposed. Nothing to crack, nothing to repaint.'],
+        ['2.4','Walls that rise true','A tongue on top, a groove below. Courses align themselves, so walls rise straight with only a thin bond. Blocks per sq ft of wall.'],
+        ['No kiln','Lower carbon','Kemp is cured slowly in shade, never fired. Mostly sieved earth, with a small share of cement.'],
+        ['Kempu','Of the land','The red of the south-west coast’s laterite. It settles into a landscape instead of standing apart from it.'],
+        ['Slow','Made to last','Pressed dense and cured slowly before it leaves the yard, for walls meant to stand for generations.']];
+      return headH('Why Kemp','Interlocking earth blocks · Made in Mangaluru')+
+      '<div class="wy-st"><p class="rv">A wall that needs nothing added. <span>Pressed from red earth, locked course by course, and left bare for a lifetime.</span></p></div>'+
+      '<figure class="hero-img rimg"><img class="px" src="/img/approach.webp" alt="Two Kemp blocks locked together"></figure>'+
+      '<div class="band t-taupe">'+sub('Six reasons','Why architects, builders and families choose an earth wall over laterite, brick and concrete.')+
+        '<div class="wy">'+R.map(function(r,i){return '<div class="rv" style="transition-delay:'+((i%3)*.1)+'s"><span class="i">'+p2(i+1)+'</span><b>'+r[0]+'</b><h3>'+r[1]+'</h3><p>'+r[2]+'</p></div>'}).join('')+'</div></div>'+
+      sub('Of the land, for the land','Kemp begins as the red soil under India’s south-west coast. It is sieved, pressed and cured, then built into walls that look like where they stand.')+
+      '<div class="duo"><figure class="rimg"><img class="px" loading="lazy" src="/img/process-4.webp" alt="Rows of blocks curing in a sunlit yard"><figcaption>Curing in shade</figcaption></figure><figure class="rimg"><img class="px" loading="lazy" src="/img/philosophy-2.webp" alt="A shaded terracotta terrace with a plunge pool"><figcaption>Left bare, inside and out</figcaption></figure></div>'+
+      '<div class="band t-clay close-b" style="margin-top:96px"><div class="rv"><h2>See what your build needs.</h2><div class="row"><a class="btnx" href="#plan">Plan your build</a><a class="link" href="#range">The Kemp range <span aria-hidden="true">→</span></a></div></div></div>'+
+      ctaH('Ask about Kemp','Prices on request · Delivered across India')},
     about:function(){var a=ABOUT;return headH('About Ardhom','An Indian initiative · Est. Mangaluru, India')+
       '<div class="ab-lede"><p class="rv">'+a.lede+'</p><p class="rv muted">'+a.lede2+'</p></div>'+
       '<figure class="hero-img rimg"><img class="px" src="/img/founders.webp" alt="Sunith K Shetty and Sujith Shetty, seen from behind, standing before an arched doorway in a Kemp earth-block wall"></figure>'+
@@ -1509,12 +1650,24 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
     h+='</div><footer class="dfoot t-ivory">'+$('#foot').innerHTML+'</footer>';
     dv.innerHTML=h;
     dvImgs=$$('img.px',dv);dvTxt=$$('.tp',dv);dvTxt.forEach(function(el){el._p=parseFloat(el.dataset.p)||.1});
-    imgLoad(dv);observeReveal(dv);bindPrev(dv);
+    imgLoad(dv);observeReveal(dv);bindPrev(dv);if(key==='plan')initPlan(dv);
     $('#dvBack',dv).addEventListener('click',goBack);
     var g=$('#dvGo',dv);if(g)g.addEventListener('click',function(){closeDetail();setTimeout(function(){var t=$('#contact');if(lenis)lenis.scrollTo(t,{duration:1.4});else t.scrollIntoView({behavior:'smooth'})},500)});
     var n=$('.nx',dv);if(n)n.addEventListener('click',function(){location.hash=this.dataset.k});
     dv.scrollTop=0;lastDvY=-1;
   }
+  function initPlan(root){var A=$('#p-area',root),H=$('#p-ht',root),C=$('#p-cw',root),segs=$$('.seg button',root),F=2,last={},wa=$('#p-wa',root);
+    function fmt(n){return Math.round(n).toLocaleString('en-IN')}
+    function fill(r){r.style.setProperty('--v',((r.value-r.min)/(r.max-r.min)*100).toFixed(1)+'%')}
+    function tw(el,to,suf){var from=last[el.id]||0;last[el.id]=to;var st=performance.now();(function f(){var t=clamp((performance.now()-st)/700),v=from+(to-from)*(1-Math.pow(1-t,3));el.textContent=fmt(v)+(suf||'');if(t<1)requestAnimationFrame(f)})()}
+    function calc(){var a=+A.value,h=+H.value,c=+C.value;[A,H,C].forEach(fill);
+      $('#o-area',root).textContent=fmt(a)+' sq ft';$('#o-ht',root).textContent=h+' ft';$('#o-cw',root).textContent=c?fmt(c)+' running ft':'None';$('#o-fl',root).textContent=F;
+      var wall=a*0.19*h*F*0.88+c*5,blocks=wall*2.4*1.04,half=blocks*.08;
+      tw($('#o-blk',root),blocks);tw($('#o-wall',root),wall,' sq ft');tw($('#o-half',root),half);tw($('#o-bare',root),wall*2,' sq ft');
+      wa.href='https://wa.me/918660167354?text='+encodeURIComponent('Hello Ardhom, I am planning a build and would like an exact quote for Kemp blocks.\n\nBuilt-up area: '+fmt(a)+' sq ft per floor\nFloors: '+F+'\nWall height: '+h+' ft'+(c?'\nCompound wall: '+fmt(c)+' running ft':'')+'\nEstimate: about '+fmt(blocks)+' blocks')}
+    [A,H,C].forEach(function(r){r.addEventListener('input',calc)});
+    segs.forEach(function(b){b.addEventListener('click',function(){F=+b.dataset.f;segs.forEach(function(x){x.classList.toggle('on',x===b)});calc()})});
+    calc()}
   var stack=[],goingBack=false;
   function openDetail(key){if(!D[key])return;if(!dvOpen)lastFocus=document.activeElement;var was=dvOpen;render(key);dvOpen=true;dv.classList.add('on');if(was){dv.classList.remove('swap');void dv.offsetWidth;dv.classList.add('swap')}if(lenis)lenis.stop();setTimeout(function(){var b=$('#dvBack',dv);if(b)b.focus({preventScroll:true})},60)}
   function closeDetail(){if(!dvOpen)return;dvOpen=false;stack=[];dv.classList.remove('on');lastY=-1;lastSec=null;jp.classList.remove('on');if(lenis&&sheet.hidden)lenis.start();if(location.hash){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
@@ -1532,24 +1685,6 @@ footer~*:not(script):not(style):not(link){position:fixed!important}
   $('#copyEnq').addEventListener('click',function(){var b=this;function sel(){var r=document.createRange();r.selectNodeContents(dt);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press copy'}try{navigator.clipboard.writeText(dt.textContent).then(function(){b.textContent='Copied'},sel)}catch(e){sel()}});
 
 
-  /* block calculator */
-  (function(){var a=$('#c-area'),fl=$('#c-fl'),ht=$('#c-ht'),cw=$('#c-cw'),ow=$('#o-wall'),ob=$('#o-blk'),oh=$('#o-half'),last={};
-    function num(el,d){var v=parseFloat(el.value);return isFinite(v)&&v>0?v:d}
-    function fmt(n){return Math.round(n).toLocaleString('en-IN')}
-    function tween(el,to){var from=last[el.id]||0;last[el.id]=to;var st=performance.now();(function f(){var t=clamp((performance.now()-st)/600),v=from+(to-from)*(1-Math.pow(1-t,3));el.textContent=fmt(v);if(t<1)requestAnimationFrame(f)})()}
-    function calc(){var A=num(a,0),F=+fl.value||1,H=num(ht,10),C=parseFloat(cw.value)||0;
-      var run=A*0.19,wall=run*H*F*0.88+Math.max(0,C)*5,blocks=wall*2.4*1.04,half=blocks*0.08;
-      tween(ow,wall);tween(ob,blocks);tween(oh,half);return {A:A,F:F,blocks:blocks}}
-    [a,fl,ht,cw].forEach(function(el){el.addEventListener('input',calc)});calc();
-    $('#calcGo').addEventListener('click',function(){var r=calc(),q=$('#f-qty');if(q)q.value='About '+fmt(r.blocks)+' blocks ('+fmt(r.A)+' sq ft × '+r.F+' floor'+(r.F>1?'s':'')+')'});
-  })();
-  /* footer hard stop */
-  var foot=$('#foot');function fb(){return foot.getBoundingClientRect().bottom+scrollY}
-  function tame(){if(root.scrollHeight>fb()+1){var n=foot.nextElementSibling;while(n){var t=n.tagName;if(t!=='SCRIPT'&&t!=='STYLE'&&t!=='LINK'&&getComputedStyle(n).position!=='fixed')n.style.setProperty('position','fixed','important');n=n.nextElementSibling}}}
-  tame();addEventListener('load',tame);[1500,4000,9000].forEach(function(t){setTimeout(tame,t)});try{new MutationObserver(tame).observe(body,{childList:true})}catch(e){}
-  if(('ontouchstart' in window)||navigator.maxTouchPoints>0){var y0=0;addEventListener('touchstart',function(e){y0=e.touches[0].clientY},{passive:true});
-    addEventListener('touchmove',function(e){if(!sheet.hidden||dvOpen)return;if(y0-e.touches[0].clientY>0&&scrollY>=fb()-innerHeight-2)e.preventDefault()},{passive:false});
-    addEventListener('scroll',function(){if(!sheet.hidden||dvOpen)return;var m=fb()-innerHeight;if(scrollY>m+1)scrollTo(0,m)},{passive:true})}
 })();
 </script>
 
