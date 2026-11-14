@@ -824,7 +824,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
 
 /* plan page */
 .pl{display:grid;grid-template-columns:var(--col) minmax(0,1.1fr) minmax(0,1fr);border-top:1px solid var(--line)}
-.pl-in{grid-column:2;display:grid;align-content:start;border-left:1px solid var(--line)}
+.pl-in{grid-column:2;min-width:0;display:grid;align-content:start;border-left:1px solid var(--line)}
 .rg{display:grid;gap:14px;padding:28px 32px 30px 12px;border-bottom:1px solid var(--line)}
 .rg .h{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
 .rg label,.rg .lab{font-size:13px;color:var(--muted)}
@@ -840,11 +840,12 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
 .seg button{min-height:52px;font-size:18px;border:0;border-left:1px solid var(--line);border-radius:0;cursor:pointer;color:inherit;background:transparent;transition:background-color .4s,color .4s}
 .seg button:first-child{border-left:0}
 .seg button.on{background:var(--door);color:#fff}
-.pl-out{grid-column:3;margin:0;background:var(--walnut);color:#F2E9DC;--muted:#C9B49E;--line:rgba(242,233,220,.16);padding:36px max(16px,env(safe-area-inset-right,0px)) 36px 36px;display:grid;gap:22px;align-content:start;position:sticky;top:48px}
-.pl-out .k{font-size:13px;color:#E8B79C}
-.pl-out .bn{font-size:clamp(64px,8.4vw,150px);letter-spacing:-.055em;line-height:.9;font-variant-numeric:tabular-nums}
-.pl-out .bn small{display:block;font-size:15px;letter-spacing:0;color:var(--muted);margin-top:14px;line-height:1.4}
-.pl-out dl{display:grid;grid-template-columns:1fr auto;border-top:1px solid var(--line)}
+.pl-out{grid-column:3;margin:0;min-width:0;overflow:hidden;container-type:inline-size;background:var(--walnut);color:#F2E9DC;--fg:#F2E9DC;--muted:#C9B49E;--line:rgba(242,233,220,.16);padding:36px max(16px,env(safe-area-inset-right,0px)) 36px 36px;display:grid;gap:22px;align-content:start;position:sticky;top:48px}
+.dv .pl-out .k{font-size:14px;color:#E8B79C;opacity:1}
+.dv .pl-out dd{color:#F2E9DC;padding-left:16px}.dv .pl-out dt{color:#C9B49E}
+.pl-out .bn{font-size:min(150px,calc(100cqw / (var(--ch,6) * .6)));white-space:nowrap;min-width:0;letter-spacing:-.055em;line-height:.9;font-variant-numeric:tabular-nums}
+.pl-out .bn small{display:block;white-space:normal;font-size:15px;letter-spacing:0;color:var(--muted);margin-top:14px;line-height:1.4}
+.pl-out dl{display:grid;grid-template-columns:minmax(0,1fr) auto;border-top:1px solid var(--line)}
 .pl-out dt,.pl-out dd{padding:14px 0;border-bottom:1px solid var(--line);margin:0}
 .pl-out dt{font-size:14px;color:var(--muted)}
 .pl-out dd{font-size:22px;letter-spacing:-.02em;text-align:right;font-variant-numeric:tabular-nums}
@@ -1672,14 +1673,14 @@ html::-webkit-scrollbar,body::-webkit-scrollbar,.dv::-webkit-scrollbar,*::-webki
     var n=$('.nx',dv);if(n)n.addEventListener('click',function(){location.hash=this.dataset.k});
     dv.scrollTop=0;lastDvY=-1;
   }
-  function initPlan(root){var lim={'p-area':[100,1e7,0],'p-fl':[1,200,0],'p-ht':[7,40,1],'p-cw':[0,1e6,0]},last={},wa=$('#p-wa',root);
+  function initPlan(root){var lim={'p-area':[100,500000,0],'p-fl':[1,100,0],'p-ht':[7,30,1],'p-cw':[0,100000,0]},last={},wa=$('#p-wa',root);
     function fmt(n){return Math.round(n).toLocaleString('en-IN')}
     function val(id){var el=$('#'+id,root),v=parseFloat(String(el.value).replace(/[^0-9.]/g,''));var L=lim[id];if(!isFinite(v))v=L[0];return Math.min(L[1],Math.max(L[0],v))}
     function show(id,v){var el=$('#'+id,root),L=lim[id];el.value=L[2]?String(v):fmt(v)}
     function tw(el,to,suf){var from=last[el.id]||0;last[el.id]=to;var st=performance.now();(function f(){var t=clamp((performance.now()-st)/700),v=from+(to-from)*(1-Math.pow(1-t,3));el.textContent=fmt(v)+(suf||'');if(t<1)requestAnimationFrame(f)})()}
     function calc(){var a=val('p-area'),F=Math.round(val('p-fl')),h=val('p-ht'),c=val('p-cw');
       var wall=a*0.19*h*F*0.88+c*5,blocks=wall*2.4*1.04,half=blocks*.08;
-      tw($('#o-blk',root),blocks);tw($('#o-wall',root),wall,' sq ft');tw($('#o-half',root),half);tw($('#o-bare',root),wall*2,' sq ft');
+      var bo=$('#o-blk',root);bo.parentElement.style.setProperty('--ch',Math.max(5,fmt(blocks).length));tw(bo,blocks);tw($('#o-wall',root),wall,' sq ft');tw($('#o-half',root),half);tw($('#o-bare',root),wall*2,' sq ft');
       wa.href='https://wa.me/918660167354?text='+encodeURIComponent('Hello Ardhom, I am planning a build and would like an exclusive quote for Kemp blocks.\n\nBuilt-up area: '+fmt(a)+' sq ft per floor\nFloors: '+F+'\nWall height: '+h+' ft'+(c?'\nCompound wall: '+fmt(c)+' running ft':'')+'\nEstimate: about '+fmt(blocks)+' blocks')}
     Object.keys(lim).forEach(function(id){var el=$('#'+id,root);el.addEventListener('input',calc);el.addEventListener('blur',function(){show(id,id==='p-fl'?Math.round(val(id)):val(id));calc()});el.addEventListener('keydown',function(e){if(e.key==='Enter')el.blur()})});
     $$('.stp button',root).forEach(function(b){b.addEventListener('click',function(){var id=b.dataset.t,v=val(id)+parseFloat(b.dataset.d),L=lim[id];v=Math.min(L[1],Math.max(L[0],v));show(id,v);calc()})});
